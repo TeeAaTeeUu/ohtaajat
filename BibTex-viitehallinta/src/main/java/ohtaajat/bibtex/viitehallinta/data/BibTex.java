@@ -1,4 +1,4 @@
-package tatu.bibtex.viitehallinta;
+package ohtaajat.bibtex.viitehallinta.data;
 
 public class BibTex {
 
