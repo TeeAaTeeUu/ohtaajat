@@ -7,15 +7,6 @@
     <display-name>BibTex-viitehallinta</display-name>
 
     <filter>
-        <filter-name>http-method-filter</filter-name>
-        <filter-class>org.springframework.web.filter.HiddenHttpMethodFilter</filter-class>
-    </filter>
-
-    <filter-mapping>
-        <filter-name>http-method-filter</filter-name>
-        <servlet-name>front-controller</servlet-name>
-    </filter-mapping>
-    <filter>
         <filter-name>encoding-filter</filter-name>
         <filter-class>
             org.springframework.web.filter.CharacterEncodingFilter
