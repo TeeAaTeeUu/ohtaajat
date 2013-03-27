@@ -32,9 +32,33 @@ public class BookTest {
     }
     
     @Test
+    public void voiTallentaaMonth() {
+        kirja.setMontha(9);
+        assertEquals(9, kirja.getMontha());
+    }
+    
+    @Test
+    public void voiTallentaaSeries() {
+        kirja.setSeries("kaljaasi reissu -julkaisu");
+        assertEquals("kaljaasi reissu -julkaisu", kirja.getSeries());
+    }
+    
+    @Test
+    public void voiTallentaaEdition() {
+        kirja.setEdition("third");
+        assertEquals("third", kirja.getEdition());
+    }
+    
+    @Test
+    public void voiTallentaaNote() {
+        kirja.setNote("tärkeä kirja, muista etenkin se");
+        assertEquals("tärkeä kirja, muista etenkin se", kirja.getNote());
+    }
+    
+    @Test
     public void voiTallentaaYear() {
-        kirja.setYear(1978);
-        assertEquals(1978, kirja.getYear());
+        kirja.setYeara(1978);
+        assertEquals(1978, kirja.getYeara());
     }
     
     @Test
@@ -51,8 +75,8 @@ public class BookTest {
     
     @Test
     public void voiAsettaaID() {
-        kirja.setId(567575);
-        assertEquals(567575, kirja.getId());
+        kirja.setId(0x7234bL);
+        assertEquals(new Long(0x7234bL), kirja.getId());
     }
     
     @Test
@@ -68,7 +92,7 @@ public class BookTest {
         kirja.setTitle("Mind in Society: The Development of Higher Psychological Processes");
         kirja.setAddress("Cambridge, MA");
         kirja.setPublisher("Harvard University Press");
-        kirja.setYear(1978);
+        kirja.setYeara(1978);
         kirja.setAuthor("L. S. Vygotsky");
         assertEquals(true, kirja.onKaikkipakollinen());
     }
@@ -78,7 +102,7 @@ public class BookTest {
         kirja.setTitle("Mind in Society: The Development of Higher Psychological Processes");
         kirja.setAddress("Cambridge, MA");
         kirja.setPublisher("Harvard University Press");
-        kirja.setYear(1978);
+        kirja.setYeara(1978);
         assertEquals(false, kirja.onKaikkipakollinen());
     }
 }

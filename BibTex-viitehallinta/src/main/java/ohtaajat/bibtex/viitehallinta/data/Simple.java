@@ -14,22 +14,16 @@ public class Simple implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
-    private long id;
+    private Long id;
     @Column(name = "author")
     private String author;
-    @Column(name = "editor")
-    private String editor;
     @Column(name = "title")
     private String title;
-    @Column(name = "publisher")
-    private String publisher;
-    @Column(name = "year")
-    private int year;
-    @Column(name = "address")
-    private String address;
+    @Column(name = "yeara")
+    private int yeara;
     HashMap<String, Boolean> asetettu = new HashMap<String, Boolean>();
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -43,27 +37,12 @@ public class Simple implements Serializable {
         this.asetettu.put("title", true);
     }
 
-    public void setPublisher(String publisher) {
-        this.publisher = publisher;
-        this.asetettu.put("publisher", true);
+    public void setYeara(int yeara) {
+        this.yeara = yeara;
+        this.asetettu.put("yeara", true);
     }
 
-    public void setYear(int year) {
-        this.year = year;
-        this.asetettu.put("year", true);
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-        this.asetettu.put("address", true);
-    }
-
-    public void setEditor(String editor) {
-        this.editor = editor;
-        this.asetettu.put("editor", true);
-    }
-
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
@@ -75,19 +54,7 @@ public class Simple implements Serializable {
         return title;
     }
 
-    public String getPublisher() {
-        return publisher;
-    }
-
-    public int getYear() {
-        return year;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public String getEditor() {
-        return editor;
+    public int getYeara() {
+        return yeara;
     }
 }
