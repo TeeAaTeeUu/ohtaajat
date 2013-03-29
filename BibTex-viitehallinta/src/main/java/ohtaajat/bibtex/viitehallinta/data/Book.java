@@ -1,6 +1,7 @@
 package ohtaajat.bibtex.viitehallinta.data;
 
 import java.util.ArrayList;
+import java.util.Map;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -30,6 +31,8 @@ public class Book extends Simple {
     private int montha;
     @Column(name = "note")
     private String note;
+    ArrayList<String> pitaaSisaltaa;
+    ArrayList<String> pitaaSisaltaaVainJokin;
 
     public String getSeries() {
         return series;
@@ -67,10 +70,10 @@ public class Book extends Simple {
         this.asetettu.put("note", true);
     }
 
-    ArrayList<String> pitaaSisaltaa = new ArrayList<String>();
-    ArrayList<String> pitaaSisaltaaVainJokin = new ArrayList<String>();
-
     public Book() {
+        super();
+        this.pitaaSisaltaaVainJokin = new ArrayList<String>();
+        this.pitaaSisaltaa = new ArrayList<String>();
         this.pitaaSisaltaaVainJokin.add("author");
         this.pitaaSisaltaaVainJokin.add("editor");
 
@@ -131,5 +134,13 @@ public class Book extends Simple {
     public void setAddress(String address) {
         this.address = address;
         this.asetettu.put("address", true);
+    }
+
+    public String toBibTex(BibTexMuunnin bibTexMuunnin) {
+        String bibTexKoodi = "";
+        for (Map.Entry tagi : this.asetettu.entrySet()) {
+            bibTexKoodi += bibTexMuunnin.tagToBibTex((String)tagi.getKey(), (String)tagi.getValue());
+        }
+        return bibTexKoodi;
     }
 }

@@ -4,19 +4,19 @@ import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-public class BibTexTest {
+public class BibTexMuunninTest {
     
-    BibTex bibTex;
+    BibTexMuunnin bibTex;
 
     @Before
     public void setUp() {
-        bibTex = new BibTex();
+        bibTex = new BibTexMuunnin();
     }
 
     @Test
     public void umlautDegeneratorToimii() {
-        String testi = bibTex.umlautDegenerator("tåsti nukke Änkö");
+        String testi = bibTex.tagToBibTex("yeara", "tåsti nukke Änkö");
         System.out.println(testi);
-        assertEquals("t{\\aa}sti nukke {\\\"A}nk{\\\"o}", testi);
+        assertEquals("year = {t{\\aa}sti nukke {\\\"A}nk{\\\"o}},", testi);
     }
 }

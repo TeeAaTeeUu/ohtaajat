@@ -21,7 +21,11 @@ public class Simple implements Serializable {
     private String title;
     @Column(name = "yeara")
     private int yeara;
-    HashMap<String, Boolean> asetettu = new HashMap<String, Boolean>();
+    HashMap<String, Boolean> asetettu;
+
+    public Simple() {
+        this.asetettu = new HashMap<String, Boolean>();
+    }
 
     public void setId(Long id) {
         this.id = id;
@@ -56,5 +60,17 @@ public class Simple implements Serializable {
 
     public int getYeara() {
         return yeara;
+    }
+    
+    public boolean isAuthorSet() {
+        return this.asetettu.get("author");
+    }
+
+    public boolean isTitleSet() {
+        return this.asetettu.get("title");
+    }
+
+    public boolean isYearaSet() {
+        return this.asetettu.get("yeara");
     }
 }
