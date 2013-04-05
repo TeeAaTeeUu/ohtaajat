@@ -10,27 +10,34 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
-@RequestMapping("book")
 public class BookController {
 
     @Autowired
     private BookService bookService;
 
-    @RequestMapping(value = "", method = RequestMethod.POST)
-    public String create(@Valid @ModelAttribute("book") Book book, BindingResult bindingResult) {
+    @RequestMapping(value = "book", method = RequestMethod.POST)
+    public String create(@Valid @ModelAttribute("book") Book book,
+            BindingResult bindingResult,
+            RedirectAttributes redirectAttributes) {
         if (bindingResult.hasErrors()) {
             return "book";
         }
         bookService.create(book);
+        redirectAttributes.addFlashAttribute("message", "New book created!");
         return "redirect:book";
     }
 
-    @RequestMapping(value = "", method = RequestMethod.GET)
-    public String list(@ModelAttribute("book") Book book,
-            Model model) {
-        model.addAttribute("books", bookService.list());
+    @RequestMapping(value = "book", method = RequestMethod.GET)
+    public String showForm(@ModelAttribute("book") Book book) {
         return "book";
+    }
+
+    @RequestMapping(value = "books", method = RequestMethod.GET)
+    public String list(Model model) {
+        model.addAttribute("books", bookService.list());
+        return "books";
     }
 }
