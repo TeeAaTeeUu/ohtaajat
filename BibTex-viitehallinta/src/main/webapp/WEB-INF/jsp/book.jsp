@@ -1,12 +1,34 @@
+
+
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Kirja</title>
     </head>
-    <body>
-        <h1>Hello World!</h1>
-        <a href="http://nwalsh.com/tex/texhelp/bibtx-9.html">tärkeä linkki</a>
+    <body bgcolor="#C0C0C0">
+        <h1><U>Kirja</U></h1>
+        <form:form commandName="book" action="${pageContext.request.contextPath}/app" method="POST">
+            ID:
+            <form:input path="id" /><form:errors path="id" />
+            <br>
+            Author:
+            <form:input path="author" /><form:errors path="author" />
+            <br>
+            Title:
+            <form:input path="title" /><form:errors path="title" />
+            <br>
+            Year:
+            <form:input path="yeara" /><form:errors path="yeara" />
+            <br>
+            Publisher:
+            <form:input path="publisher" /><form:errors path="publisher" />
+            <br>
+            <input type="submit" value="Muunna" />
+            <input type="reset" value="Tyhjennä" />
+        </form:form>
+
     </body>
 </html>
