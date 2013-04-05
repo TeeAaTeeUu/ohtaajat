@@ -5,6 +5,7 @@ import ohtaajat.bibtex.viitehallinta.data.Book;
 import ohtaajat.bibtex.viitehallinta.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,10 +17,10 @@ public class BookController {
 
     @Autowired
     private BookService bookService;
-    
+
     @RequestMapping(value = "", method = RequestMethod.POST)
     public String create(@Valid @ModelAttribute("book") Book book, BindingResult bindingResult) {
-        if(bindingResult.hasErrors()) {
+        if (bindingResult.hasErrors()) {
             return "book";
         }
         bookService.create(book);
@@ -27,7 +28,9 @@ public class BookController {
     }
 
     @RequestMapping(value = "", method = RequestMethod.GET)
-    public String list(@ModelAttribute("book") Book book) {
+    public String list(@ModelAttribute("book") Book book,
+            Model model) {
+        model.addAttribute("books", bookService.list());
         return "book";
     }
 }
