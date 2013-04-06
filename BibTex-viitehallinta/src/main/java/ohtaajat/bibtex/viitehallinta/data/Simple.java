@@ -25,6 +25,7 @@ public class Simple implements Serializable {
 
     public Simple() {
         this.asetettu = new HashMap<String, Boolean>();
+        this.alustaAsetettu();
     }
 
     public void setId(Long id) {
@@ -46,6 +47,10 @@ public class Simple implements Serializable {
         this.asetettu.put("yeara", true);
     }
 
+    public void setYear(int yeara) {
+        this.setYeara(yeara);
+    }
+
     public Long getId() {
         return id;
     }
@@ -61,7 +66,11 @@ public class Simple implements Serializable {
     public int getYeara() {
         return yeara;
     }
-    
+
+    public int getYear() {
+        return this.getYeara();
+    }
+
     public boolean isAuthorSet() {
         return this.asetettu.get("author");
     }
@@ -72,5 +81,15 @@ public class Simple implements Serializable {
 
     public boolean isYearaSet() {
         return this.asetettu.get("yeara");
+    }
+
+    public boolean isYearSet() {
+        return this.isYearaSet();
+    }
+
+    private void alustaAsetettu() {
+        this.asetettu.put("author", false);
+        this.asetettu.put("title", false);
+        this.asetettu.put("yeara", false);
     }
 }

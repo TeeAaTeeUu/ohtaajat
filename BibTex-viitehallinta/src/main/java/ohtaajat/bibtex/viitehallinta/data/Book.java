@@ -56,9 +56,17 @@ public class Book extends Simple {
         return montha;
     }
 
+    public int getMonth() {
+        return this.getMontha();
+    }
+
     public void setMontha(int montha) {
         this.montha = montha;
         this.asetettu.put("montha", true);
+    }
+
+    public void setMonth(int montha) {
+        this.setMontha(montha);
     }
 
     public String getNote() {
@@ -72,22 +80,8 @@ public class Book extends Simple {
 
     public Book() {
         super();
-        this.pitaaSisaltaaVainJokin = new ArrayList<String>();
-        this.pitaaSisaltaa = new ArrayList<String>();
-        this.pitaaSisaltaaVainJokin.add("author");
-        this.pitaaSisaltaaVainJokin.add("editor");
-
-        this.pitaaSisaltaa.add("title");
-        this.pitaaSisaltaa.add("publisher");
-        this.pitaaSisaltaa.add("yeara");
-
-        for (String tarkistettava : this.pitaaSisaltaa) {
-            this.asetettu.put(tarkistettava, false);
-        }
-
-        for (String tarkistettava : this.pitaaSisaltaaVainJokin) {
-            this.asetettu.put(tarkistettava, false);
-        }
+        this.alustaPitaaSisaltaa();
+        this.alustaAsetettu();
     }
 
     public boolean onKaikkipakollinen() {
@@ -138,9 +132,100 @@ public class Book extends Simple {
 
     public String toBibTex(BibTexMuunnin bibTexMuunnin) {
         String bibTexKoodi = "";
-        for (Map.Entry tagi : this.asetettu.entrySet()) {
-            bibTexKoodi += bibTexMuunnin.tagToBibTex((String)tagi.getKey(), (String)tagi.getValue());
+
+        if (isTitleSet() == true) {
+            bibTexKoodi += bibTexMuunnin.tagToBibTex("title", this.getTitle());
         }
+        if (isYearSet() == true) {
+            bibTexKoodi += bibTexMuunnin.tagToBibTex("year", Integer.toString(this.getYear()));
+        }
+        if (isAuthorSet() == true) {
+            bibTexKoodi += bibTexMuunnin.tagToBibTex("author", this.getAuthor());
+        }
+        if (isPublisherSet() == true) {
+            bibTexKoodi += bibTexMuunnin.tagToBibTex("publisher", this.getPublisher());
+        }
+        if (isEditorSet() == true) {
+            bibTexKoodi += bibTexMuunnin.tagToBibTex("editor", this.getEditor());
+        }
+        if (isAddressSet() == true) {
+            bibTexKoodi += bibTexMuunnin.tagToBibTex("address", this.getAddress());
+        }
+        if (isSeriesSet() == true) {
+            bibTexKoodi += bibTexMuunnin.tagToBibTex("series", this.getSeries());
+        }
+        if (isEditionSet() == true) {
+            bibTexKoodi += bibTexMuunnin.tagToBibTex("edition", this.getEdition());
+        }
+        if (isMonthSet() == true) {
+            bibTexKoodi += bibTexMuunnin.tagToBibTex("month", Integer.toString(this.getMonth()));
+        }
+        if (isNoteSet() == true) {
+            bibTexKoodi += bibTexMuunnin.tagToBibTex("note", this.getNote());
+        }
+
         return bibTexKoodi;
+    }
+
+    public boolean isPublisherSet() {
+        return this.asetettu.get("publisher");
+    }
+
+    public boolean isEditorSet() {
+        return this.asetettu.get("editor");
+    }
+
+    public boolean isAddressSet() {
+        return this.asetettu.get("address");
+    }
+
+    public boolean isSeriesSet() {
+        return this.asetettu.get("series");
+    }
+
+    public boolean isEditionSet() {
+        return this.asetettu.get("edition");
+    }
+
+    public boolean isMonthaSet() {
+        return this.asetettu.get("montha");
+    }
+
+    public boolean isMonthSet() {
+        return this.isMonthaSet();
+    }
+
+    public boolean isNoteSet() {
+        return this.asetettu.get("note");
+    }
+
+    private void alustaPitaaSisaltaa() {
+        this.pitaaSisaltaaVainJokin = new ArrayList<String>();
+        this.pitaaSisaltaa = new ArrayList<String>();
+
+        this.pitaaSisaltaaVainJokin.add("author");
+        this.pitaaSisaltaaVainJokin.add("editor");
+
+        this.pitaaSisaltaa.add("title");
+        this.pitaaSisaltaa.add("publisher");
+        this.pitaaSisaltaa.add("yeara");
+
+        for (String tarkistettava : this.pitaaSisaltaa) {
+            this.asetettu.put(tarkistettava, false);
+        }
+
+        for (String tarkistettava : this.pitaaSisaltaaVainJokin) {
+            this.asetettu.put(tarkistettava, false);
+        }
+    }
+
+    private void alustaAsetettu() {
+        this.asetettu.put("publisher", false);
+        this.asetettu.put("editor", false);
+        this.asetettu.put("address", false);
+        this.asetettu.put("series", false);
+        this.asetettu.put("edition", false);
+        this.asetettu.put("montha", false);
+        this.asetettu.put("note", false);
     }
 }

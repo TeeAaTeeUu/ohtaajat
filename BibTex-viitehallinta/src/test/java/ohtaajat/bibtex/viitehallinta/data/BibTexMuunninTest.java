@@ -17,6 +17,13 @@ public class BibTexMuunninTest {
     public void umlautDegeneratorToimii() {
         String testi = bibTex.tagToBibTex("yeara", "tåsti nukke Änkö");
         System.out.println(testi);
-        assertEquals("year = {t{\\aa}sti nukke {\\\"A}nk{\\\"o}},", testi);
+        assertEquals("year = {t{\\aa}sti nukke {\\\"A}nk{\\\"o}}," + "\n", testi);
+    }
+    
+    @Test
+    public void umlautDegeneratorToimii2() {
+        String testi = bibTex.tagToBibTex("montha", 8);
+        System.out.println(testi);
+        assertEquals("month" + " = {" + 8 + "}," + "\n", testi);
     }
 }

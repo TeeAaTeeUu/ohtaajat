@@ -32,9 +32,13 @@ public class BibTexMuunnin {
         }
         return this.muunnaBibTexiksi(key, value);
     }
+    
+    public String tagToBibTex(String key, int value) {
+        return this.tagToBibTex(key, Integer.toString(value));
+    }
 
     private String muunnaBibTexiksi(String key, String value) {
         value = this.umlautDegenerator(value);
-        return (key + " = {" + value + "},");
+        return (key + " = {" + value + "}," + "\n");
     }
 }

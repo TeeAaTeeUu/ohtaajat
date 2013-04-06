@@ -18,9 +18,11 @@ public class BibTexTekija {
     }
     
     public String palautaBibTex() {
-        String bibTex = "@book{Martin09," + "/n";
+        String bibTex = "";
         for (Book book : this.Books) {
+            bibTex += "@book{Martin09," + "/n";
             bibTex += book.toBibTex(this.bibTexMuunnin);
+            bibTex += "}" + "\n" + "\n";
         }
         return bibTex;
     }
