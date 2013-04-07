@@ -26,8 +26,8 @@ public class Book extends Simple {
     private String series;
     @Column(name = "edition")
     private String edition;
-    @Column(name = "montha")
-    private int montha;
+    @Column(name = "month")
+    private int month;
     @Column(name = "note")
     private String note;
     ArrayList<String> pitaaSisaltaa;
@@ -51,21 +51,13 @@ public class Book extends Simple {
         this.asetettu.put("edition", true);
     }
 
-    public int getMontha() {
-        return montha;
-    }
-
     public int getMonth() {
-        return this.getMontha();
+        return month;
     }
 
-    public void setMontha(int montha) {
-        this.montha = montha;
+    public void setMonth(int month) {
+        this.month = month;
         this.asetettu.put("montha", true);
-    }
-
-    public void setMonth(int montha) {
-        this.setMontha(montha);
     }
 
     public String getNote() {

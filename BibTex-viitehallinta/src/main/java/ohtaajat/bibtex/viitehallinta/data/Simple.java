@@ -19,8 +19,8 @@ public class Simple implements Serializable {
     private String author;
     @Column(name = "title")
     private String title;
-    @Column(name = "yeara")
-    private int yeara;
+    @Column(name = "year")
+    private int year;
     HashMap<String, Boolean> asetettu;
 
     public Simple() {
@@ -42,13 +42,9 @@ public class Simple implements Serializable {
         this.asetettu.put("title", true);
     }
 
-    public void setYeara(int yeara) {
-        this.yeara = yeara;
-        this.asetettu.put("yeara", true);
-    }
-
     public void setYear(int yeara) {
-        this.setYeara(yeara);
+        this.year = yeara;
+        this.asetettu.put("yeara", true);
     }
 
     public Long getId() {
@@ -63,12 +59,8 @@ public class Simple implements Serializable {
         return title;
     }
 
-    public int getYeara() {
-        return yeara;
-    }
-
     public int getYear() {
-        return this.getYeara();
+        return year;
     }
 
     public boolean isAuthorSet() {

@@ -85,7 +85,7 @@ public class BookTest {
         kirja.setTitle("Mind in Society: The Development of Higher Psychological Processes");
         kirja.setAddress("Cambridge, MA");
         kirja.setPublisher("Harvard University Press");
-        kirja.setYeara(1978);
+        kirja.setYear(1978);
         assertEquals(false, kirja.onKaikkipakollinen());
     }
     
