@@ -75,7 +75,7 @@ public class BookTest {
         kirja.setTitle("Mind in Society: The Development of Higher Psychological Processes");
         kirja.setAddress("Cambridge, MA");
         kirja.setPublisher("Harvard University Press");
-        kirja.setYeara(1978);
+        kirja.setYear(1978);
         kirja.setAuthor("L. S. Vygotsky");
         assertEquals(true, kirja.onKaikkipakollinen());
     }

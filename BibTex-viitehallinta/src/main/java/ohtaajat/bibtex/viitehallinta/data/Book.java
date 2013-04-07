@@ -1,7 +1,6 @@
 package ohtaajat.bibtex.viitehallinta.data;
 
 import java.util.ArrayList;
-import java.util.Map;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -131,40 +130,44 @@ public class Book extends Simple {
     }
 
     public String toBibTex(BibTexMuunnin bibTexMuunnin) {
-        String bibTexKoodi = "";
 
-        if (isTitleSet() == true) {
-            bibTexKoodi += bibTexMuunnin.tagToBibTex("title", this.getTitle());
-        }
-        if (isYearSet() == true) {
-            bibTexKoodi += bibTexMuunnin.tagToBibTex("year", Integer.toString(this.getYear()));
-        }
-        if (isAuthorSet() == true) {
-            bibTexKoodi += bibTexMuunnin.tagToBibTex("author", this.getAuthor());
-        }
-        if (isPublisherSet() == true) {
-            bibTexKoodi += bibTexMuunnin.tagToBibTex("publisher", this.getPublisher());
-        }
-        if (isEditorSet() == true) {
-            bibTexKoodi += bibTexMuunnin.tagToBibTex("editor", this.getEditor());
-        }
-        if (isAddressSet() == true) {
-            bibTexKoodi += bibTexMuunnin.tagToBibTex("address", this.getAddress());
-        }
-        if (isSeriesSet() == true) {
-            bibTexKoodi += bibTexMuunnin.tagToBibTex("series", this.getSeries());
-        }
-        if (isEditionSet() == true) {
-            bibTexKoodi += bibTexMuunnin.tagToBibTex("edition", this.getEdition());
-        }
-        if (isMonthSet() == true) {
-            bibTexKoodi += bibTexMuunnin.tagToBibTex("month", Integer.toString(this.getMonth()));
-        }
-        if (isNoteSet() == true) {
-            bibTexKoodi += bibTexMuunnin.tagToBibTex("note", this.getNote());
-        }
+        if (this.onKaikkipakollinen() == true) {
+            String bibTexKoodi = "";
 
-        return bibTexKoodi;
+            if (isTitleSet() == true) {
+                bibTexKoodi += bibTexMuunnin.tagToBibTex("title", this.getTitle());
+            }
+            if (isYearSet() == true) {
+                bibTexKoodi += bibTexMuunnin.tagToBibTex("year", Integer.toString(this.getYear()));
+            }
+            if (isAuthorSet() == true) {
+                bibTexKoodi += bibTexMuunnin.tagToBibTex("author", this.getAuthor());
+            }
+            if (isPublisherSet() == true) {
+                bibTexKoodi += bibTexMuunnin.tagToBibTex("publisher", this.getPublisher());
+            }
+            if (isEditorSet() == true) {
+                bibTexKoodi += bibTexMuunnin.tagToBibTex("editor", this.getEditor());
+            }
+            if (isAddressSet() == true) {
+                bibTexKoodi += bibTexMuunnin.tagToBibTex("address", this.getAddress());
+            }
+            if (isSeriesSet() == true) {
+                bibTexKoodi += bibTexMuunnin.tagToBibTex("series", this.getSeries());
+            }
+            if (isEditionSet() == true) {
+                bibTexKoodi += bibTexMuunnin.tagToBibTex("edition", this.getEdition());
+            }
+            if (isMonthSet() == true) {
+                bibTexKoodi += bibTexMuunnin.tagToBibTex("month", Integer.toString(this.getMonth()));
+            }
+            if (isNoteSet() == true) {
+                bibTexKoodi += bibTexMuunnin.tagToBibTex("note", this.getNote());
+            }
+            return bibTexKoodi;
+        }
+        return "";
+        
     }
 
     public boolean isPublisherSet() {
