@@ -25,11 +25,6 @@ public class BibTexMuunnin {
     }
 
     public String tagToBibTex(String key, String value) {
-        if (key.equals("yeara")) {
-            key = "year";
-        } else if (key.equals("montha")) {
-            key = "month";
-        }
         return this.muunnaBibTexiksi(key, value);
     }
     

@@ -57,7 +57,7 @@ public class Book extends Simple {
 
     public void setMonth(int month) {
         this.month = month;
-        this.asetettu.put("montha", true);
+        this.asetettu.put("month", true);
     }
 
     public String getNote() {
@@ -182,12 +182,8 @@ public class Book extends Simple {
         return this.asetettu.get("edition");
     }
 
-    public boolean isMonthaSet() {
-        return this.asetettu.get("montha");
-    }
-
     public boolean isMonthSet() {
-        return this.isMonthaSet();
+        return this.asetettu.get("month");
     }
 
     public boolean isNoteSet() {
@@ -203,7 +199,7 @@ public class Book extends Simple {
 
         this.pitaaSisaltaa.add("title");
         this.pitaaSisaltaa.add("publisher");
-        this.pitaaSisaltaa.add("yeara");
+        this.pitaaSisaltaa.add("year");
 
         for (String tarkistettava : this.pitaaSisaltaa) {
             this.asetettu.put(tarkistettava, false);
@@ -220,7 +216,7 @@ public class Book extends Simple {
         this.asetettu.put("address", false);
         this.asetettu.put("series", false);
         this.asetettu.put("edition", false);
-        this.asetettu.put("montha", false);
+        this.asetettu.put("month", false);
         this.asetettu.put("note", false);
     }
 }

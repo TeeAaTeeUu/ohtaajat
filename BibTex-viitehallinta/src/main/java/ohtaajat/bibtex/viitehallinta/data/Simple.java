@@ -44,7 +44,7 @@ public class Simple implements Serializable {
 
     public void setYear(int yeara) {
         this.year = yeara;
-        this.asetettu.put("yeara", true);
+        this.asetettu.put("year", true);
     }
 
     public Long getId() {
@@ -71,17 +71,13 @@ public class Simple implements Serializable {
         return this.asetettu.get("title");
     }
 
-    public boolean isYearaSet() {
-        return this.asetettu.get("yeara");
-    }
-
     public boolean isYearSet() {
-        return this.isYearaSet();
+        return this.asetettu.get("year");
     }
 
     private void alustaAsetettu() {
         this.asetettu.put("author", false);
         this.asetettu.put("title", false);
-        this.asetettu.put("yeara", false);
+        this.asetettu.put("year", false);
     }
 }
