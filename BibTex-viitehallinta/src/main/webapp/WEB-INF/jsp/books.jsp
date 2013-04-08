@@ -1,9 +1,3 @@
-<%-- 
-    Document   : books
-    Created on : 5.4.2013, 22:42:20
-    Author     : Tero
---%>
-
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
