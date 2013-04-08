@@ -10,7 +10,7 @@
     </head>
     <body bgcolor="#C0C0C0">
         <h1><U>Kirja</U></h1>
-        <form:form commandName="book" action="${pageContext.request.contextPath}/app" method="POST">
+        <form:form commandName="book" action="${pageContext.request.contextPath}/app/book.jsp" method="POST">
             ID:
             <form:input path="id" /><form:errors path="id" />
             <br>
@@ -21,7 +21,7 @@
             <form:input path="title" /><form:errors path="title" />
             <br>
             Year:
-            <form:input path="yeara" /><form:errors path="yeara" />
+            <form:input path="year" /><form:errors path="year" />
             <br>
             Publisher:
             <form:input path="publisher" /><form:errors path="publisher" />
@@ -29,6 +29,8 @@
             <input type="submit" value="Muunna" />
             <input type="reset" value="Tyhjennä" />
         </form:form>
+            ${message}
+            
 
     </body>
 </html>
