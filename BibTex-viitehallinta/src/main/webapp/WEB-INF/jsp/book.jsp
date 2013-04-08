@@ -9,7 +9,12 @@
         <title>Kirja</title>
     </head>
     <body bgcolor="#C0C0C0">
+        
+        <a href="books">Kirja listaus</a>
+        <br>
+        
         <h1><U>Kirja</U></h1>
+        
         <form:form commandName="book" action="${pageContext.request.contextPath}/app/book.jsp" method="POST">
             ID:
             <form:input path="id" /><form:errors path="id" />
@@ -29,8 +34,8 @@
             <input type="submit" value="Muunna" />
             <input type="reset" value="Tyhjennä" />
         </form:form>
-            ${message}
-            
+        ${message}
+
 
     </body>
 </html>
