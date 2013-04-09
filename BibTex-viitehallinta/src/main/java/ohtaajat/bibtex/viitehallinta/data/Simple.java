@@ -7,6 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
+import org.hibernate.validator.constraints.NotBlank;
 
 @MappedSuperclass
 public class Simple implements Serializable {
@@ -15,6 +16,7 @@ public class Simple implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
     private Long id;
+    @NotBlank
     @Column(name = "author")
     private String author;
     @Column(name = "title")
