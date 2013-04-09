@@ -15,8 +15,8 @@
     <body bgcolor="#C0C0C0">
         <a href="book">Kirjan luonti</a>
         <h1>Kirjat</h1>
-        <c:forEach var="id" items="${books}">
-            ${id}<br>
+        <c:forEach var="book" items="${books}">
+            ${book.id}<br>
         </c:forEach>
             
         

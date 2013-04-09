@@ -10,7 +10,7 @@
     </head>
     <body bgcolor="#C0C0C0">
         
-        <a href="books">Kirja listaus</a>
+        <a href="books">Kirjojen listaus</a>
         <br>
         
         <h1><U>Kirja</U></h1>
