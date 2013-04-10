@@ -17,7 +17,7 @@ public class BookSeleniumTest {
     @Before
     public void setUp() {
         driver = new HtmlUnitDriver();
-        port = System.getProperty("jetty.port", "8090");
+        port = System.getProperty("jetty.port", "8080");
         baseUrl = "http://localhost:" + port +"/app";
     }
     
