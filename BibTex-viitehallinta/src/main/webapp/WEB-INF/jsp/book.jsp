@@ -11,6 +11,7 @@
     <body bgcolor="#C0C0C0">
         
         <a href="books">Kirjojen listaus</a>
+        <a href="books/bibtex">Kirjojen listaus BibTextinä</a>
         <br>
         
         <h1><U>Kirja</U></h1>

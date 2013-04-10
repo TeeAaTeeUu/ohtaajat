@@ -1,7 +1,10 @@
 package ohtaajat.bibtex.viitehallinta.controller;
 
+import java.util.ArrayList;
+import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.validation.Valid;
+import ohtaajat.bibtex.viitehallinta.data.BibTexMuunnin;
 import ohtaajat.bibtex.viitehallinta.data.Book;
 import ohtaajat.bibtex.viitehallinta.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,14 +30,14 @@ public class BookController {
 
     @PostConstruct
     public void init() {
-         Book book = new Book();
-         Book book2 = new Book();
-        
+        Book book = new Book();
+        Book book2 = new Book();
+
         book.setAuthor("Pekka Puupaa");
         book.setTitle("Pekka ja Patka");
         book.setYear(1989);
         book.setPublisher("Otava");
-        
+
         book2.setAuthor("Pekka Puupaa");
         book2.setTitle("Pekka ja Patka 2");
         book2.setYear(1991);
@@ -55,7 +58,7 @@ public class BookController {
         if (bindingResult.hasErrors()) {
             return "book";
         }
-        
+
         bookService.create(book);
         redirectAttributes.addFlashAttribute("message", "New book created!");
         return "redirect:book";
@@ -71,4 +74,19 @@ public class BookController {
         model.addAttribute("books", bookService.list());
         return "books";
     }
+    @RequestMapping(value = "books/bibtex", method = RequestMethod.GET)
+    public String listBibTex(Model model){
+        BibTexMuunnin bibTexMuunnin = new BibTexMuunnin();
+        List<String> bibtexLista = new ArrayList<String>();
+        for(Book book : bookService.list()){
+               bibtexLista.add(book.toBibTex(bibTexMuunnin)); 
+        }
+        
+        model.addAttribute("books", bibtexLista);
+        
+        return "booksinbibtex";
+        
+    }
+
+
 }
