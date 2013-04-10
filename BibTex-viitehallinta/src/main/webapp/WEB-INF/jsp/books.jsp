@@ -10,7 +10,12 @@
         <a href="book">Kirjan luonti</a>
         <h1>Kirjat</h1>
         <c:forEach var="book" items="${books}">
-            ${book.id}<br>
+            <b>ID:</b> ${book.id} 
+           <b>Author:</b> ${book.author} 
+           <b>Title:</b> ${book.title} 
+           <b>Year:</b> ${book.year} 
+           <b>Publisher:</b> ${book.publisher}
+            <br>
         </c:forEach>
             
         

@@ -28,14 +28,20 @@ public class BookController {
     @PostConstruct
     public void init() {
          Book book = new Book();
-
+         Book book2 = new Book();
         
         book.setAuthor("Pekka Puupaa");
         book.setTitle("Pekka ja Patka");
         book.setYear(1989);
         book.setPublisher("Otava");
+        
+        book2.setAuthor("Pekka Puupaa");
+        book2.setTitle("Pekka ja Patka 2");
+        book2.setYear(1991);
+        book2.setPublisher("Otava");
 
         bookService.create(book);
+        bookService.create(book2);
 
 
     }
