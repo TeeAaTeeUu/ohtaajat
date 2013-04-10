@@ -1,6 +1,7 @@
 package ohtaajat.bibtex.viitehallinta.data;
 
 import java.util.HashSet;
+import java.util.List;
 
 public class BibTexTekija {
 
@@ -15,6 +16,12 @@ public class BibTexTekija {
 
     public void lisaaBook(Book book) {
         this.Books.add(book);
+    }
+    
+    public void lisaaBook(List<Book> books) {
+        for(Book book : books) {
+            this.lisaaBook(book);
+        }
     }
 
     public String palautaBibTex() {

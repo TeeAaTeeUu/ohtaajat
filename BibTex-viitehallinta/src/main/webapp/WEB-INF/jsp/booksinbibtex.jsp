@@ -14,11 +14,11 @@
     <body bgcolor="#C0C0C0">
         <a href="/BibTex-viitehallinta/app/book">Kirjan luonti</a>
         <a href="/BibTex-viitehallinta/app/books">Kirjojen listaus</a>
-        
-        <h1>Kirjat BibTextinä:</h1>
-        
 
-            ${books}
+        <h1>Kirjat BibTextinä:</h1>
+
+
+        <textarea rows="15" cols="70">${books}</textarea> 
 
     </body>
 </html>
