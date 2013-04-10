@@ -5,6 +5,7 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.validation.Valid;
 import ohtaajat.bibtex.viitehallinta.data.BibTexMuunnin;
+import ohtaajat.bibtex.viitehallinta.data.BibTexTekija;
 import ohtaajat.bibtex.viitehallinta.data.Book;
 import ohtaajat.bibtex.viitehallinta.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -76,13 +77,12 @@ public class BookController {
     }
     @RequestMapping(value = "books/bibtex", method = RequestMethod.GET)
     public String listBibTex(Model model){
-        BibTexMuunnin bibTexMuunnin = new BibTexMuunnin();
-        List<String> bibtexLista = new ArrayList<String>();
+        BibTexTekija BibTexTekija = new BibTexTekija();
         for(Book book : bookService.list()){
-               bibtexLista.add(book.toBibTex(bibTexMuunnin)); 
+               BibTexTekija.lisaaBook(book);
         }
-        
-        model.addAttribute("books", bibtexLista);
+        String bibtex = BibTexTekija.palautaBibTex();
+        model.addAttribute("books", bibtex);
         
         return "booksinbibtex";
         
