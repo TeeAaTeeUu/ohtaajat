@@ -17,8 +17,8 @@
         
         <h1>Kirjat BibTextinä:</h1>
         
-        <c:forEach var="book" items="${books}">
-            ${book}<br>
-        </c:forEach>
+
+            ${books}
+
     </body>
 </html>
