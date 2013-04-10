@@ -1,5 +1,6 @@
 package ohtaajat.bibtex.viitehallinta.controller;
 
+import javax.annotation.PostConstruct;
 import javax.validation.Valid;
 import ohtaajat.bibtex.viitehallinta.data.Book;
 import ohtaajat.bibtex.viitehallinta.service.BookService;
@@ -8,8 +9,6 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.FieldError;
-import org.springframework.validation.ObjectError;
 import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -25,6 +24,21 @@ public class BookController {
     @Autowired
     @Qualifier("bookValidator")
     private Validator bookValidator;
+
+    @PostConstruct
+    public void init() {
+         Book book = new Book();
+
+        
+        book.setAuthor("Pekka Puupaa");
+        book.setTitle("Pekka ja Patka");
+        book.setYear(1989);
+        book.setPublisher("Otava");
+
+        bookService.create(book);
+
+
+    }
 
     @RequestMapping(value = "book", method = RequestMethod.POST)
     public String create(@Valid @ModelAttribute("book") Book book,

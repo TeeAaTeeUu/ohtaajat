@@ -12,10 +12,6 @@ import javax.persistence.Table;
 @Table(name = "BookObject")
 public class Book extends Simple {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id")
-    private Long id;
     @Column(name = "publisher")
     private String publisher;
     @Column(name = "editor")

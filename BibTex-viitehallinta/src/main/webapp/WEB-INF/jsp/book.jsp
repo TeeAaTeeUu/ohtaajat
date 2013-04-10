@@ -16,9 +16,6 @@
         <h1><U>Kirja</U></h1>
         
         <form:form commandName="book" action="${pageContext.request.contextPath}/app/book" method="POST">
-            ID:
-            <form:input path="id" /><form:errors path="id" />
-            <br>
             Author:
             <form:input path="author" /><form:errors path="author" />
             <br>
