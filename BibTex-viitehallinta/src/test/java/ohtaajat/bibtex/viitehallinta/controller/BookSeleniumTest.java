@@ -17,14 +17,15 @@ public class BookSeleniumTest {
     @Before
     public void setUp() {
         driver = new HtmlUnitDriver();
-        port = System.getProperty("jetty.port", "8084");
-        baseUrl = "http://localhost:" + port +"/BibTex-viitehallinta/app";
+        port = System.getProperty("jetty.port", "8080");
+        baseUrl = "http://localhost:" + port +"/app";
     }
     
     @Test
     public void testaaEttaSaadaanKirjanLisaysLomakeOsoitteestaBook(){
         driver.get(baseUrl+"/book");
-        assertTrue(driver.getPageSource(), driver.getPageSource().contains("Kirja"));
+        System.out.println();
+        assertTrue("Ei löydy kirja otsikkoa", driver.getPageSource().contains("Kirja"));
         assertTrue("Ei löydy author kenttää", driver.getPageSource().contains("Author"));
         assertTrue("Ei löydy title kenttää", driver.getPageSource().contains("Title"));
         assertTrue("Ei löydy year kenttää", driver.getPageSource().contains("Year"));
