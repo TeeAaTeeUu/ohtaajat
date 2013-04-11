@@ -17,7 +17,6 @@
         
         <h1>Kirjat BibTextinä:</h1>
         
-
             ${books}
 
     </body>
