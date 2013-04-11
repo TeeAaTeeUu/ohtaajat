@@ -1,6 +1,7 @@
 package ohtaajat.bibtex.viitehallinta.data;
 
 import java.util.HashSet;
+import java.util.List;
 
 public class BibTexTekija {
 
@@ -16,17 +17,21 @@ public class BibTexTekija {
     public void lisaaBook(Book book) {
         this.Books.add(book);
     }
+    
+    public void lisaaBook(List<Book> books) {
+        for(Book book : books) {
+            this.lisaaBook(book);
+        }
+    }
 
     public String palautaBibTex() {
         this.otsikot = new HashSet<String>();
         
         String bibTex = "";
         for (Book book : this.Books) {
-            if (book.onKaikkipakollinen() == true) {
                 bibTex += "@book{" + this.palautaOtsikko(book) + "," + "\n";
                 bibTex += book.toBibTex(this.bibTexMuunnin);
                 bibTex += "}" + "\n" + "\n";
-            }
         }
         return bibTex;
     }
@@ -51,7 +56,7 @@ public class BibTexTekija {
     }
 
     private int getYear(Book book) {
-        int vuosi = book.getYear();
+        int vuosi = Integer.parseInt(book.getFieldValue("year"));
 
         if (vuosi >= 2000 && vuosi < 2100) {
             vuosi -= 2000;
@@ -64,11 +69,11 @@ public class BibTexTekija {
 
     private String[] getSplittedAuthorOrEditor(Book book) {
         String[] nimet;
-        if (book.isAuthorSet() == true) {
-            nimet = book.getAuthor().split(" ");
-        } else {
-            nimet = book.getEditor().split(" ");
+        String nimi = book.getFieldValue("author");
+        if (nimi == null) {
+            nimi = book.getFieldValue("editor");
         }
+        nimet = nimi.split(" ");
         return nimet;
     }
 

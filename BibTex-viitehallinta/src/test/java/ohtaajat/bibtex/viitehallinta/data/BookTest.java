@@ -16,44 +16,44 @@ public class BookTest {
     
     @Test
     public void voiTallentaaPublisher() {
-        kirja.setPublisher("Harvard University Press");
-        assertEquals("Harvard University Press", kirja.getPublisher());
+        kirja.addField(new Field("publisher", "Harvard University Press"));
+        assertEquals("Harvard University Press", kirja.getFieldValue("publisher"));
     }
     
     @Test
     public void voiTallentaaMonth() {
-        kirja.setMonth(9);
-        assertEquals(9, kirja.getMonth());
+        kirja.addField(new Field("month", "9"));
+        assertEquals("9", kirja.getFieldValue("month"));
     }
     
     @Test
     public void voiTallentaaSeries() {
-        kirja.setSeries("kaljaasi reissu -julkaisu");
-        assertEquals("kaljaasi reissu -julkaisu", kirja.getSeries());
+        kirja.addField(new Field("series", "kaljaasi reissu -julkaisu"));
+        assertEquals("kaljaasi reissu -julkaisu", kirja.getFieldValue("series"));
     }
     
     @Test
     public void voiTallentaaEdition() {
-        kirja.setEdition("third");
-        assertEquals("third", kirja.getEdition());
+        kirja.addField(new Field("edition", "third"));
+        assertEquals("third",  kirja.getFieldValue("edition"));
     }
     
     @Test
     public void voiTallentaaNote() {
-        kirja.setNote("tärkeä kirja, muista etenkin se");
-        assertEquals("tärkeä kirja, muista etenkin se", kirja.getNote());
+        kirja.addField(new Field("note", "tärkeä kirja, muista etenkin se"));
+        assertEquals("tärkeä kirja, muista etenkin se",  kirja.getFieldValue("note"));
     }
     
     @Test
     public void voiTallentaaAddress() {
-        kirja.setAddress("Cambridge, MA");
-        assertEquals("Cambridge, MA", kirja.getAddress());
+        kirja.addField(new Field("address", "Cambridge, MA"));
+        assertEquals("Cambridge, MA", kirja.getFieldValue("address"));
     }
     
     @Test
     public void voiTallentaaEditor() {
-        kirja.setEditor("mommo mies");
-        assertEquals("mommo mies", kirja.getEditor());
+        kirja.addField(new Field("editor", "mommo mies"));
+        assertEquals("mommo mies",  kirja.getFieldValue("editor"));
     }
     
     @Test
@@ -62,114 +62,5 @@ public class BookTest {
         assertEquals(new Long(0x7234bL), kirja.getId());
     }
     
-    @Test
-    public void eiHyvaksyVajaata() {
-        kirja.setTitle("Mind in Society: The Development of Higher Psychological Processes");
-        kirja.setAddress("Cambridge, MA");
-        kirja.setPublisher("Harvard University Press");
-        assertEquals(false, kirja.onKaikkipakollinen());
-    }
-    
-    @Test
-    public void onKaikkiPakollinenHyvaksyyKunnollisen() {
-        kirja.setTitle("Mind in Society: The Development of Higher Psychological Processes");
-        kirja.setAddress("Cambridge, MA");
-        kirja.setPublisher("Harvard University Press");
-        kirja.setYear(1978);
-        kirja.setAuthor("L. S. Vygotsky");
-        assertEquals(true, kirja.onKaikkipakollinen());
-    }
-    
-    @Test
-    public void eiHyvaksyIlmanAuthorTaiEditor() {
-        kirja.setTitle("Mind in Society: The Development of Higher Psychological Processes");
-        kirja.setAddress("Cambridge, MA");
-        kirja.setPublisher("Harvard University Press");
-        kirja.setYear(1978);
-        assertEquals(false, kirja.onKaikkipakollinen());
-    }
-    
-    @Test
-    public void addressinTallennusRekisteroityy() {
-        kirja.setAddress("Hienon miehen tie 3 ??");
-        assertEquals(true, kirja.isAddressSet());
-    }
-
-    @Test
-    public void editionTallennusRekisteroityy() {
-        kirja.setEdition("3th");
-        assertEquals(true, kirja.isEditionSet());
-    }
-
-    @Test
-    public void editorTallennusRekisteroityy() {
-        kirja.setEditor("Mestarilaulaja Seppo");
-        assertEquals(true, kirja.isEditorSet());
-    }
-    
-    @Test
-    public void monthinTallennusRekisteroityy() {
-        kirja.setMonth(7);
-        assertEquals(true, kirja.isMonthSet());
-    }
-
-    @Test
-    public void notenTallennusRekisteroityy() {
-        kirja.setNote("3th");
-        assertEquals(true, kirja.isNoteSet());
-    }
-
-    @Test
-    public void publisherinTallennusRekisteroityy() {
-        kirja.setPublisher("Mestarijulkaisija Tapio");
-        assertEquals(true, kirja.isPublisherSet());
-    }
-    
-    @Test
-    public void seriesinTallennusRekisteroityy() {
-        kirja.setSeries("kalajulkaisut");
-        assertEquals(true, kirja.isSeriesSet());
-    }
-
-    @Test
-    public void publisherVakionaEiAsetettu() {
-        kirja.setTitle("Mestarijulkaisija Tapio");
-        assertEquals(false, kirja.isPublisherSet());
-    }
-    
-    @Test
-    public void addressVakionaEiAsetettu() {
-        kirja.setPublisher("Hienon miehen tie 3 ??");
-        assertEquals(false, kirja.isAddressSet());
-    }
-
-    @Test
-    public void editionVakionaEiAsetettu() {
-        kirja.setEditor("3th");
-        assertEquals(false, kirja.isEditionSet());
-    }
-
-    @Test
-    public void editorVakionaEiAsetettu() {
-        kirja.setEdition("Mestarilaulaja Seppo");
-        assertEquals(false, kirja.isEditorSet());
-    }
-    
-    @Test
-    public void monthVakionaEiAsetettu() {
-        kirja.setYear(7);
-        assertEquals(false, kirja.isMonthSet());
-    }
-
-    @Test
-    public void noteVakionaEiAsetettu() {
-        kirja.setPublisher("3th");
-        assertEquals(false, kirja.isNoteSet());
-    }
-    
-    @Test
-    public void seriesVakionaEiAsetettu() {
-        kirja.setNote("kalajulkaisut");
-        assertEquals(false, kirja.isSeriesSet());
-    }
+  
 }
