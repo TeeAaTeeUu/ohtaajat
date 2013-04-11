@@ -11,13 +11,15 @@
         <a href="books/bibtex">Kirjojen listaus BibTextinä</a>
         <h1>Kirjat</h1>
         <c:forEach var="book" items="${books}">
-            <b>ID:</b> ${book.id} 
-            <b>Author:</b> ${book.author} 
-            <b>Title:</b> ${book.title} 
-            <b>Year:</b> ${book.year} 
-            <b>Publisher:</b> ${book.publisher}
+            ${entry.book}          
+            <b>ID:</b> ${book.id}
+            <c:forEach var="field" items="${book.fields}">
+            <b>${field.name}:</b> ${field.value}
+        </c:forEach>
             <br>
         </c:forEach>
+            
+
             
         
     </body>

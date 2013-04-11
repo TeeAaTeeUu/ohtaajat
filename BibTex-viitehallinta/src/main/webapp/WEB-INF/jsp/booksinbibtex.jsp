@@ -16,14 +16,9 @@
         <a href="/BibTex-viitehallinta/app/books">Kirjojen listaus</a>
 
         <h1>Kirjat BibTextinä:</h1>
-<<<<<<< HEAD
         
-            ${books}
-=======
-
-
         <textarea rows="15" cols="70">${books}</textarea> 
->>>>>>> 000a5dd9c9201b32154240b5936f142315df4666
+
 
     </body>
 </html>
