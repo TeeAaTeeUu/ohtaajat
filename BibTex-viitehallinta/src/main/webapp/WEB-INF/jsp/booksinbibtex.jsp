@@ -9,7 +9,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Kirjat bibtex</title>
     </head>
     <body bgcolor="#C0C0C0">
         <a href="/BibTex-viitehallinta/app/book">Kirjan luonti</a>
