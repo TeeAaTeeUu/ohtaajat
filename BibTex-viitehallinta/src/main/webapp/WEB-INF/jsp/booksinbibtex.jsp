@@ -1,8 +1,3 @@
-<%-- 
-    Document   : booksInBibTex
-    Created on : 10.4.2013, 15:44:23
-    Author     : Teemu
---%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -17,7 +12,7 @@
 
         <h1>Kirjat BibTextinä:</h1>
         
-        <textarea rows="15" cols="70">${books}</textarea> 
+        ${books}
 
 
     </body>

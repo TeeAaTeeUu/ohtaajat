@@ -1,5 +1,3 @@
-
-
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -9,13 +7,13 @@
         <title>Kirja</title>
     </head>
     <body bgcolor="#C0C0C0">
-        
+
         <a href="books">Kirjojen listaus</a>
         <a href="books/bibtex">Kirjojen listaus BibTextinä</a>
         <br>
-        
+
         <h1><U>Kirja</U></h1>
-        
+
         <form:form commandName="book" action="${pageContext.request.contextPath}/app/book" method="POST">
             Author:
             <form:input path="author" /><form:errors path="author" />

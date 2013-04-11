@@ -87,6 +87,7 @@ public class BookController {
         BibTexTekija BibTexTekija = new BibTexTekija();
         BibTexTekija.lisaaBook(bookService.list());
         String bibtex = BibTexTekija.palautaBibTex();
+        bibtex = bibtex.replaceAll("\n", "<br />");
         model.addAttribute("books", bibtex);
 
         return "booksinbibtex";
