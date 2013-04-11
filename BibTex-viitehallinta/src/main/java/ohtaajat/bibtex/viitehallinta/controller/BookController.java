@@ -35,7 +35,7 @@ public class BookController {
         List<Field> lista1 = new ArrayList<Field>();
         List<Field> lista2 = new ArrayList<Field>();
 
-        lista1.add(new Field("auhtor", "Pekka Puupaa"));
+        lista1.add(new Field("author", "Pekka Puupaa"));
         lista1.add(new Field("title", "Pekka ja Patka"));
         lista1.add(new Field("year", "1989"));
         lista1.add(new Field("publisher", "Otava"));
@@ -85,9 +85,7 @@ public class BookController {
     @RequestMapping(value = "books/bibtex", method = RequestMethod.GET)
     public String listBibTex(Model model) {
         BibTexTekija BibTexTekija = new BibTexTekija();
-        for (Book book : bookService.list()) {
-            BibTexTekija.lisaaBook(book);
-        }
+        BibTexTekija.lisaaBook(bookService.list());
         String bibtex = BibTexTekija.palautaBibTex();
         model.addAttribute("books", bibtex);
 
