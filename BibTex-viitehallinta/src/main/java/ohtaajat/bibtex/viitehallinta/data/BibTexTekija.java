@@ -29,11 +29,9 @@ public class BibTexTekija {
         
         String bibTex = "";
         for (Book book : this.Books) {
-            if (book.onKaikkipakollinen() == true) {
                 bibTex += "@book{" + this.palautaOtsikko(book) + "," + "\n";
                 bibTex += book.toBibTex(this.bibTexMuunnin);
                 bibTex += "}" + "\n" + "\n";
-            }
         }
         return bibTex;
     }
@@ -58,7 +56,7 @@ public class BibTexTekija {
     }
 
     private int getYear(Book book) {
-        int vuosi = book.getYear();
+        int vuosi = Integer.parseInt(book.getFieldValue("year"));
 
         if (vuosi >= 2000 && vuosi < 2100) {
             vuosi -= 2000;
@@ -71,11 +69,11 @@ public class BibTexTekija {
 
     private String[] getSplittedAuthorOrEditor(Book book) {
         String[] nimet;
-        if (book.isAuthorSet() == true) {
-            nimet = book.getAuthor().split(" ");
-        } else {
-            nimet = book.getEditor().split(" ");
+        String nimi = book.getFieldValue("author");
+        if (nimi == null) {
+            nimi = book.getFieldValue("editor");
         }
+        nimet = nimi.split(" ");
         return nimet;
     }
 
