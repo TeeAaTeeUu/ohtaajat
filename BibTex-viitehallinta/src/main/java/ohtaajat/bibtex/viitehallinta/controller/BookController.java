@@ -59,8 +59,7 @@ public class BookController {
     @RequestMapping(value = "book", method = RequestMethod.POST)
     public String create(@Valid @ModelAttribute("book") BookFormObject bookFormObject,
             BindingResult bindingResult,
-            RedirectAttributes redirectAttributes,
-            Model model) {
+            RedirectAttributes redirectAttributes) {
         ValidationUtils.invokeValidator(bookValidator, bookFormObject, bindingResult);
         if (bindingResult.hasErrors()) {
             return "book";
