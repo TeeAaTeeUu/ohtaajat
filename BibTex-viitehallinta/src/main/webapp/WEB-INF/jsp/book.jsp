@@ -27,7 +27,7 @@
             Publisher:
             <form:input path="publisher" /><form:errors path="publisher" />
             <br>
-            <input type="submit" value="Muunna" />
+            <input type="submit" value="Luo" />
             <input type="reset" value="Tyhjennä" />
         </form:form>
         ${message}
