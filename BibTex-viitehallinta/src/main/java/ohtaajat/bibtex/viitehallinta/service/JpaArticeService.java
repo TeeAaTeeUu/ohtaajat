@@ -1,39 +1,39 @@
 package ohtaajat.bibtex.viitehallinta.service;
 
 import java.util.List;
-import ohtaajat.bibtex.viitehallinta.data.Book;
-import ohtaajat.bibtex.viitehallinta.repositories.BookRepository;
+import ohtaajat.bibtex.viitehallinta.data.Article;
+import ohtaajat.bibtex.viitehallinta.repositories.ArticleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
-public class JpaBookService implements BookService {
+public class JpaArticeService implements ArticleService{
 
     @Autowired
-    private BookRepository brepo;
+    private ArticleRepository arepo;
 
     @Override
     @Transactional(readOnly = false)
-    public void create(Book book) {
-        brepo.save(book);
+    public void create(Article article) {
+        arepo.save(article);
     }
 
     @Override
     @Transactional(readOnly = true)
-    public List<Book> list() {
-        return brepo.findAll();
+    public List<Article> list() {
+        return arepo.findAll();
     }
 
     @Override
     @Transactional(readOnly = true)
-    public Book findById(Long id) {
-        return brepo.findOne(id);
+    public Article findById(Long id) {
+        return arepo.findOne(id);
     }
 
     @Override
     @Transactional(readOnly = false)
     public void delete(Long id) {
-        brepo.delete(id);
+        arepo.delete(id);
     }
 }

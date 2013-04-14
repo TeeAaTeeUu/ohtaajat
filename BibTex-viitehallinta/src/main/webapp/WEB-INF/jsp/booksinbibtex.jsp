@@ -7,8 +7,8 @@
         <title>Kirjat bibtex</title>
     </head>
     <body bgcolor="#C0C0C0">
-        <a href="/BibTex-viitehallinta/app/book">Kirjan luonti</a>
-        <a href="/BibTex-viitehallinta/app/books">Kirjojen listaus</a>
+        <a href="${pageContext.request.contextPath}/app/book">Kirjan luonti</a>
+        <a href="${pageContext.request.contextPath}/app/books">Kirjojen listaus</a>
 
         <h1>Kirjat BibTextinä:</h1>
         

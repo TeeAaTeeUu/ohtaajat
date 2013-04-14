@@ -1,13 +1,9 @@
 package ohtaajat.bibtex.viitehallinta.controller;
 
-import java.util.ArrayList;
-import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.validation.Valid;
 import ohtaajat.bibtex.viitehallinta.data.BibTexTekija;
 import ohtaajat.bibtex.viitehallinta.data.Book;
-import ohtaajat.bibtex.viitehallinta.data.BookFormObject;
-import ohtaajat.bibtex.viitehallinta.data.Field;
 import ohtaajat.bibtex.viitehallinta.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -32,23 +28,20 @@ public class BookController {
 
     @PostConstruct
     public void init() {
-        List<Field> lista1 = new ArrayList<Field>();
-        List<Field> lista2 = new ArrayList<Field>();
-
-        lista1.add(new Field("author", "Pekka Puupaa"));
-        lista1.add(new Field("title", "Pekka ja Patka"));
-        lista1.add(new Field("year", "1989"));
-        lista1.add(new Field("publisher", "Otava"));
-
-        lista2.add(new Field("author", "Pekka Puupaa"));
-        lista2.add(new Field("title", "Pekka ja Patka 2"));
-        lista2.add(new Field("year", "1991"));
-        lista2.add(new Field("publisher", "Otava"));
-
         Book book = new Book();
-        book.setFields(lista1);
         Book book2 = new Book();
-        book2.setFields(lista2);
+        
+        book.setAuthor("Pekka Puupaa");
+        book.setTitle("Pekka ja Patka");
+        book.setYear("1989");
+        book.setPublisher("Otava");
+
+        book2.setAuthor("Pekka Puupaa");
+        book2.setTitle("Pekka ja Patka 2");
+        book2.setYear("1991");
+        book2.setPublisher("Otava");
+
+
 
         bookService.create(book);
         bookService.create(book2);
@@ -56,23 +49,22 @@ public class BookController {
 
     }
 
-    @RequestMapping(value = "book", method = RequestMethod.POST)
-    public String create(@Valid @ModelAttribute("book") BookFormObject bookFormObject,
+    @RequestMapping(value = "books/new", method = RequestMethod.POST)
+    public String create(@Valid @ModelAttribute("book") Book book,
             BindingResult bindingResult,
             RedirectAttributes redirectAttributes) {
-        ValidationUtils.invokeValidator(bookValidator, bookFormObject, bindingResult);
+        ValidationUtils.invokeValidator(bookValidator, book, bindingResult);
         if (bindingResult.hasErrors()) {
-            return "book";
+            return "bookform";
         }
-        Book book = new Book(bookFormObject.getAll());
         bookService.create(book);
         redirectAttributes.addFlashAttribute("message", "New book created!");
-        return "redirect:book";
+        return "redirect:books/new";
     }
 
-    @RequestMapping(value = "book", method = RequestMethod.GET)
-    public String showForm(@ModelAttribute("book") BookFormObject book) {
-        return "book";
+    @RequestMapping(value = "books/new", method = RequestMethod.GET)
+    public String showForm(@ModelAttribute("book") Book book) {
+        return "bookform";
     }
 
     @RequestMapping(value = "books", method = RequestMethod.GET)
@@ -83,9 +75,9 @@ public class BookController {
 
     @RequestMapping(value = "books/bibtex", method = RequestMethod.GET)
     public String listBibTex(Model model) {
-        BibTexTekija BibTexTekija = new BibTexTekija();
-        BibTexTekija.lisaaBook(bookService.list());
-        String bibtex = BibTexTekija.palautaBibTex();
+        BibTexTekija bibTexTekija = new BibTexTekija();
+        bibTexTekija.lisaaBook(bookService.list());
+        String bibtex = bibTexTekija.palautaBibTex();
         bibtex = bibtex.replaceAll("\n", "<br />");
         model.addAttribute("books", bibtex);
 

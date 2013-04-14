@@ -16,44 +16,44 @@ public class BookTest {
     
     @Test
     public void voiTallentaaPublisher() {
-        kirja.addField(new Field("publisher", "Harvard University Press"));
-        assertEquals("Harvard University Press", kirja.getFieldValue("publisher"));
+        kirja.setPublisher("Harvard University Press");
+        assertEquals("Harvard University Press", kirja.getPublisher());
     }
     
     @Test
     public void voiTallentaaMonth() {
-        kirja.addField(new Field("month", "9"));
-        assertEquals("9", kirja.getFieldValue("month"));
+        kirja.setMonth("9");
+        assertEquals("9", kirja.getMonth());
     }
     
     @Test
     public void voiTallentaaSeries() {
-        kirja.addField(new Field("series", "kaljaasi reissu -julkaisu"));
-        assertEquals("kaljaasi reissu -julkaisu", kirja.getFieldValue("series"));
+        kirja.setSeries("kaljaasi reissu -julkaisu");
+        assertEquals("kaljaasi reissu -julkaisu", kirja.getSeries());
     }
     
     @Test
     public void voiTallentaaEdition() {
-        kirja.addField(new Field("edition", "third"));
-        assertEquals("third",  kirja.getFieldValue("edition"));
+        kirja.setEdition("third");
+        assertEquals("third",  kirja.getEdition());
     }
     
     @Test
     public void voiTallentaaNote() {
-        kirja.addField(new Field("note", "tärkeä kirja, muista etenkin se"));
-        assertEquals("tärkeä kirja, muista etenkin se",  kirja.getFieldValue("note"));
+        kirja.setNote("tärkeä kirja, muista etenkin se");
+        assertEquals("tärkeä kirja, muista etenkin se",  kirja.getNote());
     }
     
     @Test
     public void voiTallentaaAddress() {
-        kirja.addField(new Field("address", "Cambridge, MA"));
-        assertEquals("Cambridge, MA", kirja.getFieldValue("address"));
+        kirja.setAddress("Cambridge, MA");
+        assertEquals("Cambridge, MA", kirja.getAddress());
     }
     
     @Test
     public void voiTallentaaEditor() {
-        kirja.addField(new Field("editor", "mommo mies"));
-        assertEquals("mommo mies",  kirja.getFieldValue("editor"));
+        kirja.setEditor("mommo mies");
+        assertEquals("mommo mies",  kirja.getEditor());
     }
     
     @Test
