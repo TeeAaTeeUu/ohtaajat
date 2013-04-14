@@ -6,7 +6,7 @@ description 'User can create a new book/../..'
 scenario "user can create new book", {
     given 'Kirjan luonti is selected', {
         driver = new HtmlUnitDriver();
-        driver.get("http://localhost:8080/app/book");
+        driver.get("http://localhost:8080/app/books/new");
     }
     when 'valid book information are given', {
         author = driver.findElement(By.name("author"));

@@ -6,7 +6,7 @@ description 'User can print books/..s/..s as bibtex'
 scenario "user can print books in bibtex", {
     given 'new book is added', {
         driver = new HtmlUnitDriver();
-        driver.get("http://localhost:8080/app/book");
+        driver.get("http://localhost:8080/app/books/new");
         author = driver.findElement(By.name("author"));
         title = driver.findElement(By.name("title"));
         year = driver.findElement(By.name("year"));
