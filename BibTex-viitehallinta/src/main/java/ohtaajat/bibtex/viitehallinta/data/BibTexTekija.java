@@ -5,45 +5,39 @@ import java.util.List;
 
 public class BibTexTekija {
 
-    HashSet<Book> Books;
+    HashSet<Entry> entrys;
     BibTexMuunnin bibTexMuunnin;
     HashSet<String> otsikot;
 
     public BibTexTekija() {
         this.bibTexMuunnin = new BibTexMuunnin();
-        this.Books = new HashSet<Book>();
+        this.entrys = new HashSet<Entry>();
     }
 
-    public void lisaaBook(Book book) {
-        this.Books.add(book);
-    }
-    
-    public void lisaaBook(List<Book> books) {
-        for(Book book : books) {
-            this.lisaaBook(book);
-        }
+    public void lisaaEntry(Entry book) {
+        this.entrys.add(book);
     }
 
     public String palautaBibTex() {
         this.otsikot = new HashSet<String>();
         
         String bibTex = "";
-        for (Book book : this.Books) {
-            bibTex += book.toBibTex(palautaOtsikko(book));
+        for (Entry entry : this.entrys) {
+            bibTex += entry.toBibTex(palautaOtsikko(entry));
         }
         return bibTex;
     }
 
-    private String palautaOtsikko(Book book) {
-        String tekija = this.getBookAuthorOrEditor(book);
-        int vuosi = this.getYear(book);
+    private String palautaOtsikko(Entry entry) {
+        String tekija = this.getBookAuthorOrEditor(entry);
+        int vuosi = this.getYear(entry);
         String otsikko = tekija + Integer.toString(vuosi);
 
         return tarkistaJaPalautaUniikkiOtsikko(otsikko);
     }
 
-    private String getBookAuthorOrEditor(Book book) {
-        String[] nimet = getSplittedAuthorOrEditor(book);
+    private String getBookAuthorOrEditor(Entry entry) {
+        String[] nimet = getSplittedAuthorOrEditor(entry);
 
         for (String sana : nimet) {
             if (sana.length() >= 4) {
@@ -53,8 +47,8 @@ public class BibTexTekija {
         return nimet[0];
     }
 
-    private int getYear(Book book) {
-        int vuosi = Integer.parseInt(book.getYear());
+    private int getYear(Entry entry) {
+        int vuosi = Integer.parseInt(entry.getYear());
 
         if (vuosi >= 2000 && vuosi < 2100) {
             vuosi -= 2000;
@@ -65,11 +59,11 @@ public class BibTexTekija {
         return vuosi;
     }
 
-    private String[] getSplittedAuthorOrEditor(Book book) {
+    private String[] getSplittedAuthorOrEditor(Entry entry) {
         String[] nimet;
-        String nimi = book.getAuthor();
+        String nimi = entry.getAuthor();
         if (nimi == null) {
-            nimi = book.getEditor();
+            nimi = entry.getEditor();
         }
         nimet = nimi.split(" ");
         return nimet;

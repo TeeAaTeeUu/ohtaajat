@@ -3,12 +3,12 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Books in bibtex</title>
+        <title>Inproceedings in bibtex</title>
     </head>
     <body bgcolor="#C0C0C0">
         <a href="${pageContext.request.contextPath}">Back to index page</a><br />
 
-        <h1>Books in bibtex:</h1>
-        ${books}
+        <h1>Inproceedings in bibtex:</h1>
+        ${inproceedings}
     </body>
 </html>

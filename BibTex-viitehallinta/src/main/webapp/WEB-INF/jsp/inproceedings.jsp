@@ -4,13 +4,13 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Books</title>
+        <title>Inproceedings</title>
     </head>
     <body bgcolor="#C0C0C0">
         <a href="${pageContext.request.contextPath}">Back to index page</a><br />
-        <h1>Books</h1>
-        <c:forEach var="book" items="${books}">     
-            <b>ID:</b> ${book.id} <b>Author:</b> ${book.author} <b>Title:</b> ${book.title} <b>Publisher:</b> ${book.publisher} <b>Year:</b> ${book.year}
+        <h1>Inproceedings</h1>
+        <c:forEach var="inproceeding" items="${inproceedings}">     
+            <b>ID:</b> ${inproceeding.id} <b>Author:</b> ${inproceeding.author} <b>Title:</b> ${inproceeding.title} <b>Booktitle:</b> ${inproceeding.booktitle} <b>Year:</b> ${inproceeding.year}
             <br />
         </c:forEach>
     </body>

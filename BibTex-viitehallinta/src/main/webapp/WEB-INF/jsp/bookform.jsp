@@ -8,25 +8,24 @@
     </head>
     <body bgcolor="#C0C0C0">
 
-        <a href="${pageContext.request.contextPath}/app/books">Kirjojen listaus</a>
-        <a href="${pageContext.request.contextPath}/app/books/bibtex">Kirjojen listaus BibTextinä</a>
+        <a href="${pageContext.request.contextPath}">Back to index page</a><br />
         <br>
 
         <h1><U>Kirja</U></h1>
 
-        <form:form commandName="book" action="${pageContext.request.contextPath}/app/book" method="POST">
+        <form:form commandName="book" action="${pageContext.request.contextPath}/app/books/new" method="POST">
             Author:
             <form:input path="author" /><form:errors path="author" />
-            <br>
+            <br />
             Title:
             <form:input path="title" /><form:errors path="title" />
-            <br>
-            Year:
-            <form:input path="year" /><form:errors path="year" />
-            <br>
+            <br />
             Publisher:
             <form:input path="publisher" /><form:errors path="publisher" />
-            <br>
+            <br />
+            Year:
+            <form:input path="year" /><form:errors path="year" />
+            <br />
             <input type="submit" value="Luo" />
             <input type="reset" value="Tyhjennä" />
         </form:form>

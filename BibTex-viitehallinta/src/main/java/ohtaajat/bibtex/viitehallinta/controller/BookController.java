@@ -59,7 +59,7 @@ public class BookController {
         }
         bookService.create(book);
         redirectAttributes.addFlashAttribute("message", "New book created!");
-        return "redirect:books/new";
+        return "redirect:new";
     }
 
     @RequestMapping(value = "books/new", method = RequestMethod.GET)
@@ -76,7 +76,9 @@ public class BookController {
     @RequestMapping(value = "books/bibtex", method = RequestMethod.GET)
     public String listBibTex(Model model) {
         BibTexTekija bibTexTekija = new BibTexTekija();
-        bibTexTekija.lisaaBook(bookService.list());
+        for (Book book : bookService.list()) {
+            bibTexTekija.lisaaEntry(book);
+        }
         String bibtex = bibTexTekija.palautaBibTex();
         bibtex = bibtex.replaceAll("\n", "<br />");
         model.addAttribute("books", bibtex);
