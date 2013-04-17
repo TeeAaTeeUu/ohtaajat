@@ -14,7 +14,8 @@
         <a href="${pageContext.request.contextPath}/app/articles/bibtex">List articles in bibtex</a><br /><br />
         <a href="${pageContext.request.contextPath}/app/inproceedings/new">Create new inproceeding</a><br />
         <a href="${pageContext.request.contextPath}/app/inproceedings">List inproceedings</a><br />
-        <a href="${pageContext.request.contextPath}/app/inproceedings/bibtex">List inproceedings in bibtex</a><br />
+        <a href="${pageContext.request.contextPath}/app/inproceedings/bibtex">List inproceedings in bibtex</a><br /><br />
+        <a href="${pageContext.request.contextPath}/app/entries">Search entries</a><br />
     </body>
 </html>
 

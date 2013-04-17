@@ -1,7 +1,6 @@
 package ohtaajat.bibtex.viitehallinta.service;
 
 import java.util.List;
-import ohtaajat.bibtex.viitehallinta.data.Article;
 import ohtaajat.bibtex.viitehallinta.data.Inproceeding;
 import ohtaajat.bibtex.viitehallinta.repositories.InproceedingRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,5 +35,10 @@ public class JpaInproceedingService implements InproceedingService {
     @Transactional(readOnly = false)
     public void delete(Long id) {
         arepo.delete(id);
+    }
+
+    @Override
+    public List<Inproceeding> findByAuthor(String author) {
+        return arepo.findByAuthor(author);
     }
 }

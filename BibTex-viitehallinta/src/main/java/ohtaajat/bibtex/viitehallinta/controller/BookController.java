@@ -55,7 +55,7 @@ public class BookController {
             RedirectAttributes redirectAttributes) {
         ValidationUtils.invokeValidator(bookValidator, book, bindingResult);
         if (bindingResult.hasErrors()) {
-            return "bookform";
+            return "book/bookform";
         }
         bookService.create(book);
         redirectAttributes.addFlashAttribute("message", "New book created!");
@@ -64,13 +64,13 @@ public class BookController {
 
     @RequestMapping(value = "books/new", method = RequestMethod.GET)
     public String showForm(@ModelAttribute("book") Book book) {
-        return "bookform";
+        return "book/bookform";
     }
 
     @RequestMapping(value = "books", method = RequestMethod.GET)
     public String list(Model model) {
         model.addAttribute("books", bookService.list());
-        return "books";
+        return "book/books";
     }
 
     @RequestMapping(value = "books/bibtex", method = RequestMethod.GET)
@@ -83,7 +83,7 @@ public class BookController {
         bibtex = bibtex.replaceAll("\n", "<br />");
         model.addAttribute("books", bibtex);
 
-        return "booksinbibtex";
+        return "book/booksinbibtex";
 
     }
 }

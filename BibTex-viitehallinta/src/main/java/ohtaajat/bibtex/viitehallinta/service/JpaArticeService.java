@@ -36,4 +36,9 @@ public class JpaArticeService implements ArticleService{
     public void delete(Long id) {
         arepo.delete(id);
     }
+
+    @Override
+    public List<Article> findByAuthor(String author) {
+        return arepo.findByAuthor(author);
+    }
 }

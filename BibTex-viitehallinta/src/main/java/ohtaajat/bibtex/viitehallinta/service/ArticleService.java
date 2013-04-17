@@ -8,6 +8,8 @@ public interface ArticleService {
     void create(Article article);
 
     List<Article> list();
+    
+    List<Article> findByAuthor(String author);
 
     Article findById(Long id);
 

@@ -36,4 +36,9 @@ public class JpaBookService implements BookService {
     public void delete(Long id) {
         brepo.delete(id);
     }
+
+    @Override
+    public List<Book> findByAuthor(String author) {
+        return brepo.findByAuthor(author);
+    }
 }

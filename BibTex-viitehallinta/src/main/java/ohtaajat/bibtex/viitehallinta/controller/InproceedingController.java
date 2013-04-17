@@ -31,7 +31,7 @@ public class InproceedingController {
             RedirectAttributes redirectAttributes) {
         ValidationUtils.invokeValidator(inproceedingValidator, inproceeding, bindingResult);
         if (bindingResult.hasErrors()) {
-            return "inproceedingform";
+            return "inproceeding/inproceedingform";
         }
         inproceedingService.create(inproceeding);
         redirectAttributes.addFlashAttribute("message", "New inproceeding created!");
@@ -40,13 +40,13 @@ public class InproceedingController {
 
     @RequestMapping(value = "inproceedings/new", method = RequestMethod.GET)
     public String showForm(@ModelAttribute("inproceeding") Inproceeding inproceeding) {
-        return "inproceedingform";
+        return "inproceeding/inproceedingform";
     }
 
     @RequestMapping(value = "inproceedings", method = RequestMethod.GET)
     public String list(Model model) {
         model.addAttribute("inproceedings", inproceedingService.list());
-        return "inproceedings";
+        return "inproceeding/inproceedings";
     }
 
     @RequestMapping(value = "inproceedings/bibtex", method = RequestMethod.GET)
@@ -58,6 +58,6 @@ public class InproceedingController {
         String bibtex = bibTexTekija.palautaBibTex();
         bibtex = bibtex.replaceAll("\n", "<br />");
         model.addAttribute("inproceedings", bibtex);
-        return "inproceedingsinbibtex";
+        return "inproceeding/inproceedingsinbibtex";
     }
 }

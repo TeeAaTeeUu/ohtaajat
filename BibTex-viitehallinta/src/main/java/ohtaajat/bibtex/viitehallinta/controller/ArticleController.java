@@ -3,7 +3,6 @@ package ohtaajat.bibtex.viitehallinta.controller;
 import javax.validation.Valid;
 import ohtaajat.bibtex.viitehallinta.data.Article;
 import ohtaajat.bibtex.viitehallinta.data.BibTexTekija;
-import ohtaajat.bibtex.viitehallinta.data.Inproceeding;
 import ohtaajat.bibtex.viitehallinta.service.ArticleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -32,7 +31,7 @@ public class ArticleController {
             RedirectAttributes redirectAttributes) {
         ValidationUtils.invokeValidator(articleValidator, article, bindingResult);
         if (bindingResult.hasErrors()) {
-            return "articleform";
+            return "article/articleform";
         }
         articleService.create(article);
         redirectAttributes.addFlashAttribute("message", "New article created!");
@@ -47,7 +46,7 @@ public class ArticleController {
     @RequestMapping(value = "articles", method = RequestMethod.GET)
     public String list(Model model) {
         model.addAttribute("articles", articleService.list());
-        return "articles";
+        return "article/articles";
     }
 
     @RequestMapping(value = "articles/bibtex", method = RequestMethod.GET)
@@ -59,6 +58,6 @@ public class ArticleController {
         String bibtex = bibTexTekija.palautaBibTex();
         bibtex = bibtex.replaceAll("\n", "<br />");
         model.addAttribute("articles", bibtex);
-        return "articlesinbibtex";
+        return "article/articlesinbibtex";
     }
 }

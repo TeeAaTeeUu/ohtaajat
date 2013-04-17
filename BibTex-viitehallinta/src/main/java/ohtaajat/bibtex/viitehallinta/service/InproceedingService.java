@@ -11,5 +11,7 @@ public interface InproceedingService {
 
     Inproceeding findById(Long id);
 
+    List<Inproceeding> findByAuthor(String author);
+
     void delete(Long id);
 }
