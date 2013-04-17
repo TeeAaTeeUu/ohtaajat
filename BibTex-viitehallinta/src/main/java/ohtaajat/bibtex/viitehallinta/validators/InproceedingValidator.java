@@ -1,6 +1,5 @@
 package ohtaajat.bibtex.viitehallinta.validators;
 
-import ohtaajat.bibtex.viitehallinta.data.Book;
 import ohtaajat.bibtex.viitehallinta.data.Inproceeding;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;

@@ -4,14 +4,13 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Kirja</title>
+        <title>Create new book</title>
     </head>
     <body bgcolor="#C0C0C0">
 
         <a href="${pageContext.request.contextPath}">Back to index page</a><br />
-        <br>
 
-        <h1><U>Kirja</U></h1>
+        <h1><U>Book</U></h1>
 
         <form:form commandName="book" action="${pageContext.request.contextPath}/app/books/new" method="POST">
             Author:
@@ -27,7 +26,7 @@
             <form:input path="year" /><form:errors path="year" />
             <br />
             <hr />
-            <h3>Vapaavalintaiset tiedot</h3>
+            <h3>Optional information</h3>
             Volume:
             <form:input path="volume" /><form:errors path="volume" />
             <br />
@@ -49,8 +48,8 @@
             Key:
             <form:input path="key" /><form:errors path="key" />
             <br />
-            <input type="submit" value="Luo" />
-            <input type="reset" value="Tyhjennä" />
+            <input type="submit" value="Create" />
+            <input type="reset" value="Empty" />
         </form:form>
         ${message}
 

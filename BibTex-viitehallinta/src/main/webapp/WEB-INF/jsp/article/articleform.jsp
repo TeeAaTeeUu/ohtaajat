@@ -7,8 +7,11 @@
         <title>Create new article</title>
     </head>
     <body bgcolor="#C0C0C0">
+        
         <a href="${pageContext.request.contextPath}">Back to index page</a><br />
+        
         <h1><U>Article</U></h1>
+        
         <form:form commandName="article" action="${pageContext.request.contextPath}/app/articles/new" method="POST">
             Author:
             <form:input path="author" /><form:errors path="author" />
@@ -23,7 +26,7 @@
             <form:input path="year" /><form:errors path="year" />
             <br>
             <hr />
-            <h3>Vapaavalintaiset tiedot</h3>
+            <h3>Optional information</h3>
             Volume:
             <form:input path="volume" /><form:errors path="volume" />
             <br />
@@ -42,8 +45,8 @@
             Key:
             <form:input path="key" /><form:errors path="key" />
             <br />
-            <input type="submit" value="Luo" />
-            <input type="reset" value="Tyhjennä" />
+            <input type="submit" value="Create" />
+            <input type="reset" value="Empty" />
         </form:form>
         ${message}
     </body>

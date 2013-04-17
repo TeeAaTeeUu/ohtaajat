@@ -1,5 +1,6 @@
 package ohtaajat.bibtex.viitehallinta.controller;
 
+
 import javax.validation.Valid;
 import ohtaajat.bibtex.viitehallinta.data.Article;
 import ohtaajat.bibtex.viitehallinta.data.BibTexTekija;
