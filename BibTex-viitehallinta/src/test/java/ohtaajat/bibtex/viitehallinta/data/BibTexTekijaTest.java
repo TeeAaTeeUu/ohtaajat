@@ -1,91 +1,106 @@
-//package ohtaajat.bibtex.viitehallinta.data;
-//
-//import java.util.ArrayList;
-//import java.util.List;
-//import org.junit.Before;
-//import org.junit.Test;
-//import static org.junit.Assert.*;
-//
-//public class BibTexTekijaTest {
-//
-//    BibTexTekija bibTex;
-//    Book book1;
-//    Book book2;
-//    Book book3;
-//    ArrayList<Book> books;
-//
-//    @Before
-//    public void setUp() {
-//        bibTex = new BibTexTekija();
-//        books = new ArrayList<Book>();
-//
-//        List<Field> lista1 = new ArrayList<Field>();
-//        List<Field> lista2 = new ArrayList<Field>();
-//        List<Field> lista3 = new ArrayList<Field>();
-//
-//
-//
-//        lista1.add(new Field("author", "L. S. Vygotsky"));
-//        lista1.add(new Field("title", "Mind in Society: The Development of Higher Psychological Processes"));
-//        lista1.add(new Field("year", "1978"));
-//        lista1.add(new Field("publisher", "Harvard University Press"));
-//        lista1.add(new Field("address", "Cambridge, MA"));
-//
-//        book1 = new Book();
-//        book1.setFields(lista1);
-//
-//        lista2.add(new Field("author", "L. S. Vygotsky"));
-//        lista2.add(new Field("title", "Mind in Society: The Development of Higher Psychological Processes"));
-//        lista2.add(new Field("year", "1978"));
-//        lista2.add(new Field("publisher", "Harvard University Press"));
-//        lista2.add(new Field("address", "Cambridge, MA"));
-//
-//        book2 = new Book();
-//        book2.setFields(lista2);
-//
-//        lista3.add(new Field("author", "L. S. Vygotsky"));
-//        lista3.add(new Field("title", "Mind in Society: The Development of Higher Psychological Processes"));
-//        lista3.add(new Field("year", "1978"));
-//        lista3.add(new Field("publisher", "Harvard University Press"));
-//        lista3.add(new Field("address", "Cambridge, MA"));
-//
-//        book3 = new Book();
-//        book3.setFields(lista3);
-//
-//        books.add(book1);
-//        books.add(book2);
-//
-//        bibTex.lisaaBook(books);
-//        bibTex.lisaaBook(book3);
-//    }
-//
-//    @Test
-//    public void bibTexTulostusToimii() {
-//        System.out.println(bibTex.palautaBibTex());
-//
-//        assertEquals("@book{Vygotsky78,\n"
-//                + "title = {Mind in Society: The Development of Higher Psychological Processes},\n"
-//                + "year = {1978},\n"
-//                + "author = {L. S. Vygotsky},\n"
-//                + "publisher = {Harvard University Press},\n"
-//                + "address = {Cambridge, MA},\n"
-//                + "}\n"
-//                + "\n"
-//                + "@book{Vygotsky78a,\n"
-//                + "title = {Mind in Society: The Development of Higher Psychological Processes},\n"
-//                + "year = {1978},\n"
-//                + "author = {L. S. Vygotsky},\n"
-//                + "publisher = {Harvard University Press},\n"
-//                + "address = {Cambridge, MA},\n"
-//                + "}\n"
-//                + "\n"
-//                + "@book{Vygotsky78b,\n"
-//                + "title = {Mind in Society: The Development of Higher Psychological Processes},\n"
-//                + "year = {1978},\n"
-//                + "author = {L. S. Vygotsky},\n"
-//                + "publisher = {Harvard University Press},\n"
-//                + "address = {Cambridge, MA},\n"
-//                + "}\n"
-//                + "\n", bibTex.palautaBibTex());
-//    }
-//}
+package ohtaajat.bibtex.viitehallinta.data;
+
+import java.util.ArrayList;
+import java.util.List;
+import org.junit.Before;
+import org.junit.Test;
+import static org.junit.Assert.*;
+import org.junit.matchers.JUnitMatchers;
+
+public class BibTexTekijaTest {
+
+    BibTexTekija bibTex;
+    String koodi;
+    Book kirja1;
+    Book kirja2;
+    Book kirja3;
+    Article artikkeli1;
+    Article artikkeli2;
+    ArrayList<Entry> viitteet;
+
+    @Before
+    public void setUp() {
+        bibTex = new BibTexTekija();
+        viitteet = new ArrayList<Entry>();
+
+        kirja1 = new Book();    
+
+        kirja1.setAuthor("L. S. Vygotsky");
+        kirja1.setTitle("Mind in Society: The Development of Higher Psychological Processes");
+        kirja1.setYear("1978");
+        kirja1.setPublisher("Harvard University Press");
+        kirja1.setAddress("Cambridge, MA");
+
+        kirja2 = new Book();    
+
+        kirja2.setAuthor("L. S. Vygotsky");
+        kirja2.setTitle("Mind in Society: The Development of Higher Psychological Processes");
+        kirja2.setYear("1978");
+        kirja2.setPublisher("Harvard University Press");
+        kirja2.setAddress("Cambridge, MA");
+        
+        artikkeli1 = new Article();
+
+        artikkeli1.setAuthor("L. S. Vygotsky");
+        artikkeli1.setTitle("Mind in Society: The Development of Higher Psychological Processes");
+        artikkeli1.setYear("1978");
+        artikkeli1.setJournal("Harvard University Press journal");
+        artikkeli1.setVolume("76th");
+        
+        artikkeli2 = new Article();
+
+        artikkeli1.setAuthor("L. S. Vygotsky");
+        artikkeli1.setTitle("Mind in Society: The Development of Higher Psychological Processes");
+        artikkeli1.setYear("1978");
+        artikkeli1.setJournal("Harvard University Press journal");
+        artikkeli1.setVolume("76th");
+
+        kirja3 = new Book();
+
+        kirja3.setAuthor("L. S. Vygotsky");
+        kirja3.setTitle("Mind in Society: The Development of Higher Psychological Processes");
+        kirja3.setYear("1978");
+        kirja3.setPublisher("Harvard University Press");
+        kirja3.setAddress("Cambridge, MA");
+
+        viitteet.add(kirja1);
+        viitteet.add(artikkeli1);
+        
+        bibTex.lisaaEntry(viitteet);
+        
+        bibTex.lisaaEntry(kirja2);
+        bibTex.lisaaEntry(kirja3);
+        
+        
+        koodi = bibTex.palautaBibTex();
+    }
+
+    @Test
+    public void kirjanotsikotLoytyy() {     
+        System.out.println(bibTex.palautaBibTex());
+
+        assertThat(koodi, JUnitMatchers.containsString("@book{Vygotsky78"));
+    }
+    
+    @Test
+    public void  loytyyMyosArtikkeli() {     
+        assertThat(koodi, JUnitMatchers.containsString("@article{Vygotsky78"));
+    }
+    
+    @Test
+    public void  nimiOtsikotOvatuniikkeja() {     
+        assertThat(koodi, JUnitMatchers.containsString("Vygotsky78,"));
+        assertThat(koodi, JUnitMatchers.containsString("Vygotsky78a,"));
+        assertThat(koodi, JUnitMatchers.containsString("Vygotsky78b,"));
+        assertThat(koodi, JUnitMatchers.containsString("Vygotsky78c,"));
+    }
+    
+    @Test
+    public void LoytyyKaikkiLaitetutTiedot() {
+        assertThat(koodi, JUnitMatchers.containsString("year = {1978}"));
+        assertThat(koodi, JUnitMatchers.containsString("author = {L. S. Vygotsky}"));
+        assertThat(koodi, JUnitMatchers.containsString("title = {Mind in Society: The Development of Higher Psychological Processes}"));
+        assertThat(koodi, JUnitMatchers.containsString("publisher = {Harvard University Press}"));
+        assertThat(koodi, JUnitMatchers.containsString("address = {Cambridge, MA}"));
+    }
+}

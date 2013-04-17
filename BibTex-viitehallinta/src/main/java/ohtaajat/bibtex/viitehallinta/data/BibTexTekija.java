@@ -14,8 +14,14 @@ public class BibTexTekija {
         this.entrys = new HashSet<Entry>();
     }
 
-    public void lisaaEntry(Entry book) {
-        this.entrys.add(book);
+    public void lisaaEntry(Entry viite) {
+        this.entrys.add(viite);
+    }
+    
+    public void lisaaEntry(List<Entry> lista) {
+        for (Entry entry : lista) {
+            this.lisaaEntry(entry);
+        }
     }
 
     public String palautaBibTex() {
