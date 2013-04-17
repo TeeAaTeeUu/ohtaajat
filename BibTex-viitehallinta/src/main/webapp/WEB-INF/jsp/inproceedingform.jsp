@@ -9,7 +9,7 @@
     <body bgcolor="#C0C0C0">
         <a href="${pageContext.request.contextPath}">Back to index page</a><br />
         <h1><U>Inproceeding</U></h1>
-        <form:form commandName="inproceeding" action="${pageContext.request.contextPath}/app/inproceedings/new" method="POST">
+                <form:form commandName="inproceeding" action="${pageContext.request.contextPath}/app/inproceedings/new" method="POST">
             Author:
             <form:input path="author" /><form:errors path="author" />
             <br>
@@ -22,6 +22,32 @@
             Year:
             <form:input path="year" /><form:errors path="year" />
             <br>
+            <hr />
+            <h3>Vapaavalintaiset tiedot</h3>
+            Editor:
+            <form:input path="editor" /><form:errors path="editor" />
+            <br />
+            Pages:
+            <form:input path="pages" /><form:errors path="month" />
+            <br />
+            Organization:
+            <form:input path="organization" /><form:errors path="organization" />
+            <br />
+            Publisher:
+            <form:input path="publisher" /><form:errors path="publisher" />
+            <br />
+            Address:
+            <form:input path="address" /><form:errors path="address" />
+            <br />
+            Month:
+            <form:input path="month" /><form:errors path="month" />
+            <br />
+            Note:
+            <form:input path="note" /><form:errors path="note" />
+            <br />
+            Key:
+            <form:input path="key" /><form:errors path="key" />
+            <br />
             <input type="submit" value="Luo" />
             <input type="reset" value="Tyhjennä" />
         </form:form>

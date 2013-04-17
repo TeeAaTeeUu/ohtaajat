@@ -22,6 +22,26 @@
             Year:
             <form:input path="year" /><form:errors path="year" />
             <br>
+            <hr />
+            <h3>Vapaavalintaiset tiedot</h3>
+            Volume:
+            <form:input path="volume" /><form:errors path="volume" />
+            <br />
+            Number:
+            <form:input path="number" /><form:errors path="number" />
+            <br />
+            Pages:
+            <form:input path="pages" /><form:errors path="month" />
+            <br />
+            Month:
+            <form:input path="month" /><form:errors path="month" />
+            <br />
+            Note:
+            <form:input path="note" /><form:errors path="note" />
+            <br />
+            Key:
+            <form:input path="key" /><form:errors path="key" />
+            <br />
             <input type="submit" value="Luo" />
             <input type="reset" value="Tyhjennä" />
         </form:form>
