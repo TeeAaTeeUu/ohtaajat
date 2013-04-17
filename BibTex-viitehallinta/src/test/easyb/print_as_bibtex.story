@@ -54,3 +54,29 @@ scenario "user can print inproceedings in bibtex", {
     }
           
 }
+
+scenario "user can print articles in bibtex", {
+    given 'new article is added', {
+        driver = new HtmlUnitDriver();
+        driver.get("http://localhost:8080/app/articles/new");
+        author = driver.findElement(By.name("author"));
+        title = driver.findElement(By.name("title"));
+        year = driver.findElement(By.name("year"));
+        journal = driver.findElement(By.name("journal"));
+
+        author.sendKeys("article3");
+        title.sendKeys("Artikkeli otsikko");
+        year.sendKeys("2005");
+        journal.sendKeys("joku");
+        author.submit();
+    }
+    when 'List articles link is pressed', {
+        driver.get("http://localhost:8080/app/articles/bibtex");
+    }
+    then 'articles are printed in bibtex', {
+        tuloste = driver.getPageSource();
+        driver.getPageSource().contains("article3").shouldBe true
+        driver.getPageSource().contains("@").shouldBe true
+    }
+          
+}

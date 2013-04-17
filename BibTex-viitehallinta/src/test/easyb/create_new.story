@@ -46,3 +46,25 @@ scenario "user can create new inproceeding", {
         driver.getPageSource().contains("New inproceeding created!").shouldBe true
     }
 }    
+
+scenario "user can create new article", {
+    given 'Create new article is selected', {
+        driver = new HtmlUnitDriver();
+        driver.get("http://localhost:8080/app/articles/new");
+    }
+    when 'valid article information are given', {
+        author = driver.findElement(By.name("author"));
+        title = driver.findElement(By.name("title"));
+        year = driver.findElement(By.name("year"));
+        journal = driver.findElement(By.name("journal"));
+
+        author.sendKeys("arti3");
+        title.sendKeys("arti otsikko");
+        year.sendKeys("2005");
+        journal.sendKeys("joku");
+        author.submit();
+    }
+    then 'new article is created', {
+        driver.getPageSource().contains("New article created!").shouldBe true
+    }
+}

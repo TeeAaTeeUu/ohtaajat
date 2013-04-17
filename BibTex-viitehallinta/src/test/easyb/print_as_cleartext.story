@@ -24,9 +24,9 @@ scenario "user can print books in cleartext", {
     then 'book list is printed in cleartext', {
         driver.getPageSource().contains("Kirjan otsikko").shouldBe true
     }
-    }
+}
 
-    scenario "user can print inproceedings in cleartext", {
+scenario "user can print inproceedings in cleartext", {
      given 'new inproceeding is added', {
         driver = new HtmlUnitDriver();
         driver.get("http://localhost:8080/app/inproceedings/new");
@@ -47,4 +47,27 @@ scenario "user can print books in cleartext", {
     then 'inproceedings list is printed in cleartext', {
         driver.getPageSource().contains("Inproceeding headline").shouldBe true
     }      
+}
+
+scenario "user can print articles in cleartext", {
+     given 'new article is added', {
+        driver = new HtmlUnitDriver();
+        driver.get("http://localhost:8080/app/articles/new");
+        author = driver.findElement(By.name("author"));
+        title = driver.findElement(By.name("title"));
+        year = driver.findElement(By.name("year"));
+        journal = driver.findElement(By.name("journal"));
+
+        author.sendKeys("article3");
+        title.sendKeys("article headline");
+        year.sendKeys("2005");
+        journal.sendKeys("joku");
+        author.submit();
     }
+    when 'List articles link is pressed', {
+        driver.get("http://localhost:8080/app/articles");
+    }
+    then 'articles list is printed in cleartext', {
+        driver.getPageSource().contains("article headline").shouldBe true
+    }      
+}

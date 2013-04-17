@@ -41,7 +41,7 @@ public class ArticleController {
 
     @RequestMapping(value = "articles/new", method = RequestMethod.GET)
     public String showForm(@ModelAttribute("article") Article article) {
-        return "articleform";
+        return "article/articleform";
     }
 
     @RequestMapping(value = "articles", method = RequestMethod.GET)
