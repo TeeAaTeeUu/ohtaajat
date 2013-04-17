@@ -237,4 +237,19 @@ public abstract class Entry {
         }
         return bibtex;
     }
+    
+    @Override
+    public String toString(){
+         Method[] metodit = Entry.class.getMethods();
+        String bibtex = "ID: "+id+"<br />";
+        for (Method method : metodit) {
+            if (metodienNimet.containsKey(method.getName())) {
+                String arvo = (String) ReflectionUtils.invokeMethod(method, this);
+                if (arvo != null && !arvo.trim().isEmpty()) {
+                    bibtex += metodienNimet.get(method.getName())+": "+arvo+"<br /><br />";
+                }
+            }
+        }
+        return bibtex;
+    }
 }
