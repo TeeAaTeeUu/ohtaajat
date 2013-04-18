@@ -11,6 +11,7 @@
         <a href="${pageContext.request.contextPath}">Back to index page</a><br />
 
         <h1><U>Book</U></h1>
+        <hr />
 
         <form:form commandName="book" action="${pageContext.request.contextPath}/app/books/new" method="POST">
             Author:
@@ -48,6 +49,12 @@
             Key:
             <form:input path="key" /><form:errors path="key" />
             <br />
+            <hr />
+            <h3>Custom cite (optional)</h3>
+            Cite:
+            <form:input path="cite" /><form:errors path="cite" />
+            <br />
+            <hr />
             <input type="submit" value="Create" />
             <input type="reset" value="Empty" />
         </form:form>
