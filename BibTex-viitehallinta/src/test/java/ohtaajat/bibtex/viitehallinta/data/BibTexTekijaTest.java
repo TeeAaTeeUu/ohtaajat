@@ -1,7 +1,6 @@
 package ohtaajat.bibtex.viitehallinta.data;
 
 import java.util.ArrayList;
-import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -14,6 +13,7 @@ public class BibTexTekijaTest {
     Book kirja1;
     Book kirja2;
     Book kirja3;
+    Inproceeding konferenssiJulkaisu;
     Article artikkeli1;
     Article artikkeli2;
     ArrayList<Entry> viitteet;
@@ -33,7 +33,7 @@ public class BibTexTekijaTest {
 
         kirja2 = new Book();    
 
-        kirja2.setAuthor("L. S. Vygotsky");
+        kirja2.setEditor("L. S. Vygotsky");
         kirja2.setTitle("Mind in Society: The Development of Higher Psychological Processes");
         kirja2.setYear("1978");
         kirja2.setPublisher("Harvard University Press");
@@ -55,11 +55,20 @@ public class BibTexTekijaTest {
         artikkeli1.setJournal("Harvard University Press journal");
         artikkeli1.setVolume("76th");
 
+        konferenssiJulkaisu = new Inproceeding();
+
+        konferenssiJulkaisu.setAuthor("Liu Sou Hiu");
+        konferenssiJulkaisu.setTitle("Mind in Society: The Development of Higher Psychological Processes");
+        konferenssiJulkaisu.setBooktitle("Hienon miehen julkaisut vol.3");
+        konferenssiJulkaisu.setYear("2002");
+        konferenssiJulkaisu.setPublisher("Harvard University Press");
+        konferenssiJulkaisu.setAddress("Cambridge, MA");
+        
         kirja3 = new Book();
 
         kirja3.setAuthor("L. S. Vygotsky");
         kirja3.setTitle("Mind in Society: The Development of Higher Psychological Processes");
-        kirja3.setYear("1978");
+        kirja3.setYear("2002");
         kirja3.setPublisher("Harvard University Press");
         kirja3.setAddress("Cambridge, MA");
 
@@ -71,6 +80,7 @@ public class BibTexTekijaTest {
         bibTex.lisaaEntry(kirja2);
         bibTex.lisaaEntry(kirja3);
         
+        bibTex.lisaaEntry(konferenssiJulkaisu);
         
         koodi = bibTex.palautaBibTex();
     }
@@ -86,13 +96,17 @@ public class BibTexTekijaTest {
     public void  loytyyMyosArtikkeli() {     
         assertThat(koodi, JUnitMatchers.containsString("@article{Vygotsky78"));
     }
+    @Test
+    public void  loytyyMyosinproceedings() {     
+        assertThat(koodi, JUnitMatchers.containsString("@article{Vygotsky78"));
+    }
     
     @Test
     public void  nimiOtsikotOvatuniikkeja() {     
         assertThat(koodi, JUnitMatchers.containsString("Vygotsky78,"));
         assertThat(koodi, JUnitMatchers.containsString("Vygotsky78a,"));
         assertThat(koodi, JUnitMatchers.containsString("Vygotsky78b,"));
-        assertThat(koodi, JUnitMatchers.containsString("Vygotsky78c,"));
+        assertThat(koodi, JUnitMatchers.containsString("Liu02,"));
     }
     
     @Test

@@ -1,7 +1,6 @@
 package ohtaajat.bibtex.viitehallinta.data;
 
 import java.lang.reflect.Method;
-import java.util.EnumMap;
 import java.util.HashMap;
 import java.util.Map;
 import javax.persistence.Column;
@@ -16,6 +15,7 @@ public abstract class Entry {
 
     private static BibTexMuunnin bibTexMuunnin = new BibTexMuunnin();
     private static Map<String, String> metodienNimet = new HashMap<String, String>();
+
     {
         metodienNimet.put("getAuthor", "author");
         metodienNimet.put("getEditor", "editor");
@@ -35,7 +35,6 @@ public abstract class Entry {
         metodienNimet.put("getJournal", "journal");
         metodienNimet.put("getNumber", "number");
     }
-    
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
@@ -237,19 +236,21 @@ public abstract class Entry {
         }
         return bibtex;
     }
-    
+
     @Override
-    public String toString(){
-         Method[] metodit = Entry.class.getMethods();
-        String bibtex = "ID: "+id+"<br />";
+    public String toString() {
+        Method[] metodit = Entry.class.getMethods();
+        String bibtex = "<div><table>" + "\n";
+        bibtex += "<tr><td>ID</td><td>:</td><td>" + id + "</td></tr>" + "\n";
         for (Method method : metodit) {
             if (metodienNimet.containsKey(method.getName())) {
                 String arvo = (String) ReflectionUtils.invokeMethod(method, this);
                 if (arvo != null && !arvo.trim().isEmpty()) {
-                    bibtex += metodienNimet.get(method.getName())+": "+arvo+"<br /><br />";
+                    bibtex += "<tr><td>" + metodienNimet.get(method.getName()) + "</td><td>:</td><td>" + arvo + "</td></tr>" + "\n";
                 }
             }
         }
+        bibtex += "</table></div>" + "\n";
         return bibtex;
     }
 }

@@ -3,6 +3,7 @@ package ohtaajat.bibtex.viitehallinta.data;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import org.junit.matchers.JUnitMatchers;
 
 public class BookTest {
     
@@ -57,9 +58,26 @@ public class BookTest {
     }
     
     @Test
+    public void voiTallentaaKey() {
+        kirja.setKey("Cambridge news");
+        assertEquals("Cambridge news",  kirja.getKey());
+    }
+    
+    @Test
     public void voiAsettaaID() {
         kirja.setId(0x7234bL);
         assertEquals(new Long(0x7234bL), kirja.getId());
+    }
+    
+    @Test
+    public void toStringToimii() {
+        kirja.setAuthor("L. S. Vygotsky");
+        kirja.setTitle("Mind in Society: The Development of Higher Psychological Processes");
+        kirja.setYear("1978");
+        kirja.setPublisher("Harvard University Press");
+        kirja.setAddress("Cambridge, MA");
+        
+        assertThat(kirja.toString(), JUnitMatchers.containsString("<tr><td>author</td><td>:</td><td>L. S. Vygotsky</td></tr>"));
     }
     
   

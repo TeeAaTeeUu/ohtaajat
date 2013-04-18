@@ -17,7 +17,7 @@ public class BibTexTekija {
     public void lisaaEntry(Entry viite) {
         this.entrys.add(viite);
     }
-    
+
     public void lisaaEntry(List<Entry> lista) {
         for (Entry entry : lista) {
             this.lisaaEntry(entry);
@@ -26,7 +26,7 @@ public class BibTexTekija {
 
     public String palautaBibTex() {
         this.otsikot = new HashSet<String>();
-        
+
         String bibTex = "";
         for (Entry entry : this.entrys) {
             bibTex += entry.toBibTex(palautaOtsikko(entry));
@@ -36,8 +36,8 @@ public class BibTexTekija {
 
     private String palautaOtsikko(Entry entry) {
         String tekija = this.getBookAuthorOrEditor(entry);
-        int vuosi = this.getYear(entry);
-        String otsikko = tekija + Integer.toString(vuosi);
+        String vuosi = this.getYear(entry);
+        String otsikko = tekija + vuosi;
 
         return tarkistaJaPalautaUniikkiOtsikko(otsikko);
     }
@@ -53,7 +53,7 @@ public class BibTexTekija {
         return nimet[0];
     }
 
-    private int getYear(Entry entry) {
+    private String getYear(Entry entry) {
         int vuosi = Integer.parseInt(entry.getYear());
 
         if (vuosi >= 2000 && vuosi < 2100) {
@@ -62,7 +62,11 @@ public class BibTexTekija {
             vuosi -= 1900;
         }
 
-        return vuosi;
+        if (vuosi >= 10) {
+            return Integer.toString(vuosi);
+        } else {
+            return "0" + Integer.toString(vuosi);
+        }
     }
 
     private String[] getSplittedAuthorOrEditor(Entry entry) {
@@ -88,8 +92,8 @@ public class BibTexTekija {
     private String lisaaSeuraavaKirjainLoppuun(String otsikko) {
         char loppukirjain;
         loppukirjain = otsikko.charAt(otsikko.length() - 1);
-        
-        if  (Character.isDigit(loppukirjain) == true) {
+
+        if (Character.isDigit(loppukirjain) == true) {
             otsikko += "a";
         } else {
             loppukirjain++;
