@@ -13,7 +13,8 @@ public class BibTexTekijaTest {
     Book kirja1;
     Book kirja2;
     Book kirja3;
-    Inproceeding konferenssiJulkaisu;
+    Inproceeding konferenssiJulkaisu1;
+    Inproceeding konferenssiJulkaisu2;
     Article artikkeli1;
     Article artikkeli2;
     ArrayList<Entry> viitteet;
@@ -49,20 +50,31 @@ public class BibTexTekijaTest {
         
         artikkeli2 = new Article();
 
-        artikkeli1.setAuthor("L. S. Vygotsky");
-        artikkeli1.setTitle("Mind in Society: The Development of Higher Psychological Processes");
-        artikkeli1.setYear("1978");
-        artikkeli1.setJournal("Harvard University Press journal");
-        artikkeli1.setVolume("76th");
+        artikkeli2.setAuthor("L. S. Vygotsky");
+        artikkeli2.setCite("V78");
+        artikkeli2.setTitle("Mind in Society: The Development of Higher Psychological Processes");
+        artikkeli2.setYear("1978");
+        artikkeli2.setJournal("Harvard University Press journal");
+        artikkeli2.setVolume("76th");
 
-        konferenssiJulkaisu = new Inproceeding();
+        konferenssiJulkaisu1 = new Inproceeding();
 
-        konferenssiJulkaisu.setAuthor("Liu Sou Hiu");
-        konferenssiJulkaisu.setTitle("Mind in Society: The Development of Higher Psychological Processes");
-        konferenssiJulkaisu.setBooktitle("Hienon miehen julkaisut vol.3");
-        konferenssiJulkaisu.setYear("2002");
-        konferenssiJulkaisu.setPublisher("Harvard University Press");
-        konferenssiJulkaisu.setAddress("Cambridge, MA");
+        konferenssiJulkaisu1.setAuthor("Liu Sou Hiu");
+        konferenssiJulkaisu1.setTitle("Mind in Society: The Development of Higher Psychological Processes");
+        konferenssiJulkaisu1.setBooktitle("Hienon miehen julkaisut vol.3");
+        konferenssiJulkaisu1.setYear("2002");
+        konferenssiJulkaisu1.setPublisher("Harvard University Press");
+        konferenssiJulkaisu1.setAddress("Cambridge, MA");
+        
+        konferenssiJulkaisu2 = new Inproceeding();
+
+        konferenssiJulkaisu2.setAuthor("Liu Sou Hiu");
+        konferenssiJulkaisu2.setCite("Hiu");
+        konferenssiJulkaisu2.setTitle("Mind in Society: The Development of Higher Psychological Processes");
+        konferenssiJulkaisu2.setBooktitle("Hienon miehen julkaisut vol.3");
+        konferenssiJulkaisu2.setYear("2002");
+        konferenssiJulkaisu2.setPublisher("Harvard University Press");
+        konferenssiJulkaisu2.setAddress("Cambridge, MA");
         
         kirja3 = new Book();
 
@@ -74,13 +86,16 @@ public class BibTexTekijaTest {
 
         viitteet.add(kirja1);
         viitteet.add(artikkeli1);
+        viitteet.add(konferenssiJulkaisu2);
         
         bibTex.lisaaEntry(viitteet);
         
         bibTex.lisaaEntry(kirja2);
         bibTex.lisaaEntry(kirja3);
         
-        bibTex.lisaaEntry(konferenssiJulkaisu);
+        bibTex.lisaaEntry(artikkeli2);
+        
+        bibTex.lisaaEntry(konferenssiJulkaisu1);
         
         koodi = bibTex.palautaBibTex();
     }
@@ -98,7 +113,7 @@ public class BibTexTekijaTest {
     }
     @Test
     public void  loytyyMyosinproceedings() {     
-        assertThat(koodi, JUnitMatchers.containsString("@article{Vygotsky78"));
+        assertThat(koodi, JUnitMatchers.containsString("@inproceedings{Liu02"));
     }
     
     @Test
@@ -107,6 +122,8 @@ public class BibTexTekijaTest {
         assertThat(koodi, JUnitMatchers.containsString("Vygotsky78a,"));
         assertThat(koodi, JUnitMatchers.containsString("Vygotsky78b,"));
         assertThat(koodi, JUnitMatchers.containsString("Liu02,"));
+        assertThat(koodi, JUnitMatchers.containsString("V78,"));
+        assertThat(koodi, JUnitMatchers.containsString("Hiu02,"));
     }
     
     @Test

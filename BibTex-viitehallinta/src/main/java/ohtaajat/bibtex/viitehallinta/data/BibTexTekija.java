@@ -35,10 +35,11 @@ public class BibTexTekija {
     }
 
     private String palautaOtsikko(Entry entry) {
-        String tekija = this.getBookAuthorOrEditor(entry);
-        String vuosi = this.getYear(entry);
-        String otsikko = tekija + vuosi;
+        String otsikko = this.palautaCite(entry);
 
+        if (otsikko == null) {
+            otsikko = this.palautaGeneroituOtsikko(entry);
+        }
         return tarkistaJaPalautaUniikkiOtsikko(otsikko);
     }
 
@@ -90,16 +91,47 @@ public class BibTexTekija {
     }
 
     private String lisaaSeuraavaKirjainLoppuun(String otsikko) {
-        char loppukirjain;
-        loppukirjain = otsikko.charAt(otsikko.length() - 1);
+        char loppukirjain = this.palautaViimeinenKirjain(otsikko);
 
         if (Character.isDigit(loppukirjain) == true) {
             otsikko += "a";
         } else {
             loppukirjain++;
-            otsikko = otsikko.substring(0, otsikko.length() - 1);
+            otsikko = this.poistaViimeinenKirjain(otsikko);
             otsikko += loppukirjain;
         }
+        return otsikko;
+    }
+
+    private String palautaCite(Entry entry) {
+        String cite;
+        
+        if (entry.getCite() == null) {
+            return null;
+        } else {
+            cite = entry.getCite();
+        }
+
+        char loppukirjain = this.palautaViimeinenKirjain(cite);
+        if (Character.isDigit(loppukirjain) == false) {
+            cite += this.getYear(entry);
+        }
+        return cite;
+    }
+
+    private char palautaViimeinenKirjain(String string) {
+        return string.charAt(string.length() - 1);
+    }
+
+    private String poistaViimeinenKirjain(String string) {
+        return string.substring(0, string.length() - 1);
+    }
+
+    private String palautaGeneroituOtsikko(Entry entry) {
+        String otsikko;
+        String vuosi = this.getYear(entry);
+        String tekija = this.getBookAuthorOrEditor(entry);
+        otsikko = tekija + vuosi;
         return otsikko;
     }
 }

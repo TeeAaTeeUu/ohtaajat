@@ -73,6 +73,16 @@ public abstract class Entry {
     private String journal;
     @Column(name = "number")
     private String number;
+    @Column(name = "cite")
+    private String cite;
+
+    public String getCite() {
+        return this.cite;
+    }
+
+    public void setCite(String cite) {
+        this.cite = cite;
+    }
 
     public Entry() {
     }

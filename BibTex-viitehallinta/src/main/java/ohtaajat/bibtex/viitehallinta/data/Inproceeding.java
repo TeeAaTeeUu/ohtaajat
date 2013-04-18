@@ -12,6 +12,6 @@ public class Inproceeding extends Entry {
 
     @Override
     public String toBibTex(String otsikko) {
-        return "@inproceeding{" + otsikko + "," + "\n" + toBibTex() + "}\n\n";
+        return "@inproceedings{" + otsikko + "," + "\n" + toBibTex() + "}\n\n";
     }
 }
