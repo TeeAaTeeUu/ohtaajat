@@ -105,8 +105,10 @@ public class BibTexTekija {
 
     private String palautaCite(Entry entry) {
         String cite;
-        
+
         if (entry.getCite() == null) {
+            return null;
+        } else if (entry.getCite().isEmpty() == true) {
             return null;
         } else {
             cite = entry.getCite();
