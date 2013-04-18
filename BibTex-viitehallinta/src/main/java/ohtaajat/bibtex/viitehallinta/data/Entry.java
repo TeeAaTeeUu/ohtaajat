@@ -76,14 +76,6 @@ public abstract class Entry {
     @Column(name = "cite")
     private String cite;
 
-    public String getCite() {
-        return this.cite;
-    }
-
-    public void setCite(String cite) {
-        this.cite = cite;
-    }
-
     public Entry() {
     }
 
@@ -229,6 +221,14 @@ public abstract class Entry {
 
     public void setNumber(String number) {
         this.number = number;
+    }
+
+    public String getCite() {
+        return this.cite;
+    }
+
+    public void setCite(String cite) {
+        this.cite = cite;
     }
 
     public abstract String toBibTex(String otsikko);
