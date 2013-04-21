@@ -38,7 +38,7 @@ public class JpaBookService implements BookService {
     }
 
     @Override
-    public List<Book> findByAuthor(String author) {
-        return brepo.findByAuthor(author);
+    public List<Book> findByPartOfAuthor(String author) {
+        return brepo.findByPartOfAuthor("%"+author+"%");
     }
 }

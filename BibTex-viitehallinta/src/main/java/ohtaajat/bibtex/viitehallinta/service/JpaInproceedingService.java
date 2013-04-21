@@ -38,7 +38,7 @@ public class JpaInproceedingService implements InproceedingService {
     }
 
     @Override
-    public List<Inproceeding> findByAuthor(String author) {
-        return arepo.findByAuthor(author);
+    public List<Inproceeding> findByPartOfAuthor(String author) {
+        return arepo.findByPartOfAuthor("%"+author+"%");
     }
 }

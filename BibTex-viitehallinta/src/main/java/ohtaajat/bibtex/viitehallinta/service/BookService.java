@@ -10,7 +10,7 @@ public interface BookService {
 
     Book findById(Long id);
 
-    List<Book> findByAuthor(String author);
+    List<Book> findByPartOfAuthor(String author);
     
     void delete(Long id);
 }

@@ -36,7 +36,7 @@ public class ArticleController {
         }
         articleService.create(article);
         redirectAttributes.addFlashAttribute("message", "New article created!");
-        return "redirect:new";
+        return "redirect:/app/articles";
     }
 
     @RequestMapping(value = "articles/new", method = RequestMethod.GET)

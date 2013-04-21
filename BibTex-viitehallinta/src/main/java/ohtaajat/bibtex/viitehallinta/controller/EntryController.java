@@ -42,9 +42,9 @@ public class EntryController {
             inproceedings = inproceedingService.list();
             model.addAttribute("title", "List of all entries");
         } else {
-            books = bookService.findByAuthor(author);
-            articles = articleService.findByAuthor(author);
-            inproceedings = inproceedingService.findByAuthor(author);
+            books = bookService.findByPartOfAuthor(author);
+            articles = articleService.findByPartOfAuthor(author);
+            inproceedings = inproceedingService.findByPartOfAuthor(author);
 
             model.addAttribute("title", "List of entryes with author name " + author);
         }
@@ -73,7 +73,7 @@ public class EntryController {
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.parseMediaType("text/html;charset=UTF-8"));
         headers.setContentLength(content.length);
-        headers.set("Content-Disposition", "attachment; filename=\""+name+"\"");
+        headers.set("Content-Disposition", "attachment; filename=\""+name+"\".bib");
         return new ResponseEntity<byte[]>(content, headers, HttpStatus.OK);
     }
 

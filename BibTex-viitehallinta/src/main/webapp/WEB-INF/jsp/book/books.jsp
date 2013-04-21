@@ -1,3 +1,4 @@
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -11,6 +12,9 @@
         <h1>Books</h1>
         <c:forEach var="book" items="${books}">     
             <b>ID:</b> ${book.id} <b>Author:</b> ${book.author} <b>Title:</b> ${book.title} <b>Publisher:</b> ${book.publisher} <b>Year:</b> ${book.year}
+            <form:form action="${pageContext.request.contextPath}/app/books/${book.id}/" method="DELETE">
+                <input type="submit" value="Poista" />
+            </form:form>
             <br />
         </c:forEach>
     </body>

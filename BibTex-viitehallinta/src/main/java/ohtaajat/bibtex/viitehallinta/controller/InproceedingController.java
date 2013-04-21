@@ -35,7 +35,7 @@ public class InproceedingController {
         }
         inproceedingService.create(inproceeding);
         redirectAttributes.addFlashAttribute("message", "New inproceeding created!");
-        return "redirect:new";
+        return "redirect:/app/inproceedings";
     }
 
     @RequestMapping(value = "inproceedings/new", method = RequestMethod.GET)

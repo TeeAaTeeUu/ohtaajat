@@ -38,7 +38,7 @@ public class JpaArticeService implements ArticleService{
     }
 
     @Override
-    public List<Article> findByAuthor(String author) {
-        return arepo.findByAuthor(author);
+    public List<Article> findByPartOfAuthor(String author) {
+        return arepo.findByPartOfAuthor("%"+author+"%");
     }
 }

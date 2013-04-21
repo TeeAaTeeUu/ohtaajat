@@ -9,7 +9,7 @@ public interface ArticleService {
 
     List<Article> list();
     
-    List<Article> findByAuthor(String author);
+    List<Article> findByPartOfAuthor(String author);
 
     Article findById(Long id);
 

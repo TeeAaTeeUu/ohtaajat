@@ -3,8 +3,8 @@ package ohtaajat.bibtex.viitehallinta.data;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
-@Entity(name = "inproceeding")
-@Table(name = "inproceeding")
+@Entity(name = "Inproceeding")
+@Table(name = "Inproceeding")
 public class Inproceeding extends Entry {
 
     public Inproceeding() {
