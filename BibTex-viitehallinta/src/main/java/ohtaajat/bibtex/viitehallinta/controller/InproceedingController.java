@@ -12,6 +12,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -59,5 +60,15 @@ public class InproceedingController {
         bibtex = bibtex.replaceAll("\n", "<br />");
         model.addAttribute("inproceedings", bibtex);
         return "inproceeding/inproceedingsinbibtex";
+    }
+    
+    @RequestMapping(value = "inproceedings/{inproceedingiId}", method = RequestMethod.DELETE)
+    public String delete(@PathVariable(value="inproceedingiId") Long inproceedingiId, Model model){
+        if(inproceedingService.findById(inproceedingiId) == null){
+            model.addAttribute("deleteError", "Error in deleting inproceeding: not found");
+            return "inproceeding/inproceedings";
+        }
+        inproceedingService.delete(inproceedingiId);
+        return "redirect:/app/inproceedings";
     }
 }

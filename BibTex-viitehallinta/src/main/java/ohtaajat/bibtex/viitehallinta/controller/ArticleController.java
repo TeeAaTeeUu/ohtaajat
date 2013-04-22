@@ -13,6 +13,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -60,5 +61,15 @@ public class ArticleController {
         bibtex = bibtex.replaceAll("\n", "<br />");
         model.addAttribute("articles", bibtex);
         return "article/articlesinbibtex";
+    }
+    
+    @RequestMapping(value = "articles/{articleId}", method = RequestMethod.DELETE)
+    public String delete(@PathVariable(value="articleId") Long articleId, Model model){
+        if(articleService.findById(articleId) == null){
+            model.addAttribute("deleteError", "Error in deleting article: not found");
+            return "article/articles";
+        }
+        articleService.delete(articleId);
+        return "redirect:/app/articles";
     }
 }

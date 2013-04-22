@@ -88,9 +88,10 @@ public class BookController {
 
     }
     
-    @RequestMapping(value = "books/{bookid}", method = RequestMethod.DELETE)
-    public String delete(@PathVariable(value="bookid") Long bookId){
+    @RequestMapping(value = "books/{bookId}", method = RequestMethod.DELETE)
+    public String delete(@PathVariable(value="bookId") Long bookId, Model model){
         if(bookService.findById(bookId) == null){
+            model.addAttribute("deleteError", "Error in deleting book: not found");
             return "book/books";
         }
         bookService.delete(bookId);
