@@ -280,14 +280,13 @@
                             <daemon>true</daemon>                           
                         </configuration>
                     </execution>
-<!--                    <execution>
+                    <execution>
                         <id>start-jetty2</id>
                         <phase>process-test-classes</phase>
                         
                         
                         <goals>
-                             <goal>run-exploded</goal> 
-                             toimii 8.x -versioissa 
+                            <!--<goal>run-exploded</goal>--> 
                             <goal>start</goal>
                         </goals>
                                                 
@@ -295,7 +294,7 @@
                             <scanIntervalSeconds>0</scanIntervalSeconds>
                             <daemon>true</daemon>
                         </configuration>
-                    </execution>-->
+                    </execution>
                     
                     <execution>
                         <id>stop-jetty</id>
