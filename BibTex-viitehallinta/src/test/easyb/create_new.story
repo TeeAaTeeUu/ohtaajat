@@ -21,7 +21,10 @@ scenario "user can create new book", {
         author.submit();
     }
     then 'new book is created', {
-        driver.getPageSource().contains("New book created!").shouldBe true
+        driver.getPageSource().contains("Kirja3").shouldBe true
+        driver.getPageSource().contains("Kirjan otsikko").shouldBe true
+        driver.getPageSource().contains("2005").shouldBe true
+        driver.getPageSource().contains("joku").shouldBe true
     }
 }    
 
@@ -34,16 +37,19 @@ scenario "user can create new inproceeding", {
         author = driver.findElement(By.name("author"));
         title = driver.findElement(By.name("title"));
         year = driver.findElement(By.name("year"));
-        publisher = driver.findElement(By.name("publisher"));
+        journal = driver.findElement(By.name("journal"));
 
         author.sendKeys("inpro3");
         title.sendKeys("inpro otsikko");
         year.sendKeys("2005");
-        publisher.sendKeys("joku");
+        journal.sendKeys("joku");
         author.submit();
     }
     then 'new inproceeding is created', {
-        driver.getPageSource().contains("New inproceeding created!").shouldBe true
+        driver.getPageSource().contains("inpro3").shouldBe true
+        driver.getPageSource().contains("inpro otsikko").shouldBe true
+        driver.getPageSource().contains("2005").shouldBe true
+        driver.getPageSource().contains("joku").shouldBe true
     }
 }    
 
@@ -65,6 +71,9 @@ scenario "user can create new article", {
         author.submit();
     }
     then 'new article is created', {
-        driver.getPageSource().contains("New article created!").shouldBe true
+        driver.getPageSource().contains("arti3").shouldBe true
+        driver.getPageSource().contains("arti otsikko").shouldBe true
+        driver.getPageSource().contains("2005").shouldBe true
+        driver.getPageSource().contains("joku").shouldBe true
     }
 }

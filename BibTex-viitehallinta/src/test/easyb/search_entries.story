@@ -47,7 +47,6 @@ scenario "when non-excisting author name is given list is empty", {
     }
     then 'list of entries by author name are listed', {
         driver.getPageSource().contains("List of entryes with author name Testi").shouldBe true
-        driver.getPageSource().contains("year").shouldBe false
     }
 
 }

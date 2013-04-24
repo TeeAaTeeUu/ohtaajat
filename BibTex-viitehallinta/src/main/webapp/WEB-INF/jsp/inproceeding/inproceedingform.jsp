@@ -20,7 +20,7 @@
             <form:input path="title" /><form:errors path="title" />
             <br>
             Journal:
-            <form:input path="booktitle" /><form:errors path="journal" />
+            <form:input path="journal" /><form:errors path="journal" />
             <br>
             Year:
             <form:input path="year" /><form:errors path="year" />
