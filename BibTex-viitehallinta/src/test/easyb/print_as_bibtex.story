@@ -36,10 +36,10 @@ scenario "user can print inproceedings in bibtex", {
         author = driver.findElement(By.name("author"));
         title = driver.findElement(By.name("title"));
         year = driver.findElement(By.name("year"));
-        booktitle = driver.findElement(By.name("boobtitle"));
+        booktitle = driver.findElement(By.name("booktitle"));
 
         author.sendKeys("inpro3");
-        title.sendKeys("Kirjan otsikko");
+        title.sendKeys("inpro otsikko");
         year.sendKeys("2005");
         booktitle.sendKeys("joku");
         author.submit();
