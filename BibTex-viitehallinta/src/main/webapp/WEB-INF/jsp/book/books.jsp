@@ -8,7 +8,7 @@
         <title>Books</title>
     </head>
     <body bgcolor="#C0C0C0">
-        <a href="${pageContext.request.contextPath}">Back to index page</a><br />
+        <a href="${pageContext.request.contextPath}/">Back to index page</a><br />
         <h1>Books</h1>
         <c:forEach var="book" items="${books}">     
             ${book}

@@ -6,7 +6,7 @@
         <title>Books in bibtex</title>
     </head>
     <body bgcolor="#C0C0C0">
-        <a href="${pageContext.request.contextPath}">Back to index page</a><br />
+        <a href="${pageContext.request.contextPath}/">Back to index page</a><br />
 
         <h1>Books in bibtex:</h1>
         ${books}
