@@ -79,7 +79,7 @@ public abstract class Reference {
     private void tarkistaEtteiYlimaaraisia() {
         for (String entry : kaikkiEntryOtsikot) {
             if (this.saaSisaltaaVain.contains(entry) == false) {
-                errors.reject("Sisältää jotain, mitä ei saisi sisältää: " + entry);
+                errors.rejectValue(entry, "virheellinen_arvo", "Sisältää jotain, mitä ei saisi sisältää: " + entry);
             }
         }
     }

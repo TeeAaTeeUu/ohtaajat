@@ -12,6 +12,7 @@ public class InproceedingValidator extends Reference implements Validator {
         this.saaSisaltaaVain.add("author");
         this.saaSisaltaaVain.add("title");
         this.saaSisaltaaVain.add("booktitle");
+        this.saaSisaltaaVain.add("year");
         this.saaSisaltaaVain.add("editor");
         this.saaSisaltaaVain.add("pages");
         this.saaSisaltaaVain.add("organization");
@@ -23,7 +24,7 @@ public class InproceedingValidator extends Reference implements Validator {
 
         this.pitaaSisaltaa.add("author");
         this.pitaaSisaltaa.add("title");
-        this.pitaaSisaltaa.add("booktitle");
+//        this.pitaaSisaltaa.add("booktitle");
         this.pitaaSisaltaa.add("year");
     }
 
