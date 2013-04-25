@@ -6,7 +6,25 @@ import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
 @Component(value = "articleValidator")
-public class ArticleValidator implements Validator {
+public class ArticleValidator extends Reference implements Validator {
+    
+    public ArticleValidator() {
+        this.saaSisaltaaVain.add("author");
+        this.saaSisaltaaVain.add("title");
+        this.saaSisaltaaVain.add("journal");
+        this.saaSisaltaaVain.add("year");
+        this.saaSisaltaaVain.add("volume");
+        this.saaSisaltaaVain.add("number");
+        this.saaSisaltaaVain.add("pages");
+        this.saaSisaltaaVain.add("month");
+        this.saaSisaltaaVain.add("note");
+        this.saaSisaltaaVain.add("key");
+
+        this.pitaaSisaltaa.add("author");
+        this.pitaaSisaltaa.add("title");
+        this.pitaaSisaltaa.add("journal");
+        this.pitaaSisaltaa.add("year");
+    }
 
     @Override
     public boolean supports(Class<?> type) {
@@ -15,13 +33,7 @@ public class ArticleValidator implements Validator {
 
     @Override
     public void validate(Object o, Errors errors) {
-//        BookFormObject book = (BookFormObject) o;
-//        onKaikkiPakollinen(book, errors);
-    }
-
-    public void onKaikkiPakollinen(Article article, Errors errors) {
-//        if(book.getTitle().isEmpty()){
-//            errors.rejectValue("title", "virheellinen_arvo", "virheellinen arvo");
-//        }
+        Article artikkeli = (Article) o;
+        onkoKaikkiOikein(artikkeli, errors);
     }
 }
