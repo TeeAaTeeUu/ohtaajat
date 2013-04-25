@@ -24,7 +24,7 @@ public class InproceedingValidator extends Reference implements Validator {
 
         this.pitaaSisaltaa.add("author");
         this.pitaaSisaltaa.add("title");
-//        this.pitaaSisaltaa.add("booktitle");
+        this.pitaaSisaltaa.add("booktitle");
         this.pitaaSisaltaa.add("year");
     }
 
