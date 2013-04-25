@@ -6,8 +6,27 @@ import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
 @Component(value = "inproceedingValidator")
-public class InproceedingValidator implements Validator{
-    
+public class InproceedingValidator extends Reference implements Validator {
+
+    public InproceedingValidator() {
+        this.saaSisaltaaVain.add("author");
+        this.saaSisaltaaVain.add("title");
+        this.saaSisaltaaVain.add("booktitle");
+        this.saaSisaltaaVain.add("editor");
+        this.saaSisaltaaVain.add("pages");
+        this.saaSisaltaaVain.add("organization");
+        this.saaSisaltaaVain.add("publisher");
+        this.saaSisaltaaVain.add("address");
+        this.saaSisaltaaVain.add("month");
+        this.saaSisaltaaVain.add("note");
+        this.saaSisaltaaVain.add("key");
+
+        this.pitaaSisaltaa.add("author");
+        this.pitaaSisaltaa.add("title");
+        this.pitaaSisaltaa.add("booktitle");
+        this.pitaaSisaltaa.add("year");
+    }
+
     @Override
     public boolean supports(Class<?> type) {
         return Inproceeding.class.equals(type);
@@ -15,13 +34,7 @@ public class InproceedingValidator implements Validator{
 
     @Override
     public void validate(Object o, Errors errors) {
-//        BookFormObject book = (BookFormObject) o;
-//        onKaikkiPakollinen(book, errors);
-    }
-
-    public void onKaikkiPakollinen(Inproceeding inproceeding, Errors errors) {
-//        if(book.getTitle().isEmpty()){
-//            errors.rejectValue("title", "virheellinen_arvo", "virheellinen arvo");
-//        }
+        Inproceeding julkaisu = (Inproceeding) o;
+        onkoKaikkiOikein(julkaisu, errors);
     }
 }

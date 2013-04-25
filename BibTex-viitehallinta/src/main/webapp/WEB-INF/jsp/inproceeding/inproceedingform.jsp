@@ -19,8 +19,8 @@
             Title:
             <form:input path="title" /><form:errors path="title" />
             <br>
-            Journal:
-            <form:input path="journal" /><form:errors path="journal" />
+            Booktitle:
+            <form:input path="booktitle" /><form:errors path="booktitle" />
             <br>
             Year:
             <form:input path="year" /><form:errors path="year" />
