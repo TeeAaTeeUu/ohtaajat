@@ -17,6 +17,7 @@
         
         <jetty.maven.plugin.version>8.1.5.v20120716</jetty.maven.plugin.version>
         <jetty.port>8080</jetty.port>
+        <netbeans.hint.deploy.server>gfv3ee6</netbeans.hint.deploy.server>
     </properties>
 
     <dependencies>
