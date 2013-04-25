@@ -48,7 +48,7 @@
             <property name="password" value="${database.password}"/>
         </bean>
     </beans>
-    <beans profile="dev,default">
+     <beans profile="dev,default">
         <!-- ympäristöön liittyvä konfiguraatiotiedosto -->
         <context:property-placeholder location="classpath:development.properties"/>
 
