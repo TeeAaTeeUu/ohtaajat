@@ -29,7 +29,7 @@ public abstract class Entry {
         metodienNimet.put("getMonth", "month");
         metodienNimet.put("getNote", "note");
         metodienNimet.put("getKey", "key");
-        metodienNimet.put("getBookTitle", "booktitle");
+        metodienNimet.put("getBooktitle", "booktitle");
         metodienNimet.put("getPages", "pages");
         metodienNimet.put("getOrganization", "organization");
         metodienNimet.put("getJournal", "journal");
