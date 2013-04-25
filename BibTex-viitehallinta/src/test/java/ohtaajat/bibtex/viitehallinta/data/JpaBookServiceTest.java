@@ -123,8 +123,9 @@ public class JpaBookServiceTest {
         service.create(book3);
         
         List<Book> list = new ArrayList<Book>();
-        list = service.findByPartOfAuthor("Pekka");
+        list = service.findByPartOfAuthor("Pekka Puupaa");
+        String arvo = brepo.palautaArvo();
         
-        assertEquals(2 , list.size());
+        assertEquals("%Pekka Puupaa%" , arvo);
     }
 }

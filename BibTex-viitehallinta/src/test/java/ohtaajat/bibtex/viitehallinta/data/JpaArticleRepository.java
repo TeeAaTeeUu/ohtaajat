@@ -16,20 +16,31 @@ import org.springframework.data.domain.Sort;
 public class JpaArticleRepository implements ArticleRepository {
     
     private List<Article> lista = new ArrayList<Article>();
-
+    String arvo;
+    public String palautaArvo(){
+        return arvo;
+    }
+    @Override
+    public <S extends Article> S save(S s) {
+        lista.add(s);
+        return s;
+    }
     @Override
     public List<Article> findByPartOfAuthor(String author) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        List<Article> lista = new ArrayList<Article>();
+        this.arvo=author;
+        return lista;
     }
 
     @Override
     public List<Article> findAll() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return lista;
+        
     }
 
     @Override
     public List<Article> findAll(Sort sort) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates. 
     }
 
     @Override
@@ -62,14 +73,16 @@ public class JpaArticleRepository implements ArticleRepository {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    @Override
-    public <S extends Article> S save(S s) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    
 
     @Override
     public Article findOne(Long id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        for (Article article : lista) {
+            if (article.getId() == id) {
+                return article;
+            }
+        }
+        return null;
     }
 
     @Override
@@ -84,12 +97,19 @@ public class JpaArticleRepository implements ArticleRepository {
 
     @Override
     public long count() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return lista.size();
     }
 
     @Override
     public void delete(Long id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        int index = 0;
+        for (Article article : lista) {
+            if (article.getId() == id) {
+                lista.remove(index);
+                return;
+            }
+            index++;
+        }
     }
 
     @Override

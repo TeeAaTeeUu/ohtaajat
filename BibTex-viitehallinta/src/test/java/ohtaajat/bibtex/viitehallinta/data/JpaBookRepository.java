@@ -19,7 +19,7 @@ import org.springframework.data.domain.Sort;
 public class JpaBookRepository implements BookRepository {
 
     private List<Book> lista = new ArrayList<Book>();
-
+    String arvo;
     @Override
     public <S extends Book> S save(S s) {
         lista.add(s);
@@ -30,15 +30,15 @@ public class JpaBookRepository implements BookRepository {
     public <S extends Book> List<S> save(Iterable<S> itrbl) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-
+    public String palautaArvo(){
+        return arvo;
+    }
     @Override
     public List<Book> findByPartOfAuthor(String author) {
+        this.arvo = author;
+        
         List<Book> list = new ArrayList<Book>();
-        for(Book book : lista){
-            if(book.getAuthor().matches("%"+author+"%")){
-                list.add(book);
-            }
-        }
+        
         return list;
     }
 
@@ -112,7 +112,6 @@ public class JpaBookRepository implements BookRepository {
             }
             index++;
         }
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
