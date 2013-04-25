@@ -11,7 +11,7 @@
         <a href="${pageContext.request.contextPath}">Back to index page</a><br />
         <h1>Inproceedings</h1>
         <c:forEach var="inproceeding" items="${inproceedings}">     
-            <b>ID:</b> ${inproceeding.id} <b>Author:</b> ${inproceeding.author} <b>Title:</b> ${inproceeding.title} <b>Journal:</b> ${inproceeding.journal} <b>Year:</b> ${inproceeding.year}
+            ${inproceeding}
             <form:form action="${pageContext.request.contextPath}/app/inproceedings/${inproceeding.id}/" method="DELETE">
                 <input type="submit" value="Poista" />
             </form:form>

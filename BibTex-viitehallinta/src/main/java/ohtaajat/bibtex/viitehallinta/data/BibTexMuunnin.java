@@ -34,6 +34,6 @@ public class BibTexMuunnin {
 
     private String muunnaBibTexiksi(String key, String value) {
         value = this.umlautDegenerator(value);
-        return (key + " = {" + value + "}," + "\n");
+        return ("    " + key + " = {" + value + "}," + "\n");
     }
 }

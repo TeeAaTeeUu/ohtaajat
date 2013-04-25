@@ -28,6 +28,9 @@
             <br />
             <hr />
             <h3>Optional information</h3>
+            Editor:
+            <form:input path="editor" /><form:errors path="editor" />
+            <br />
             Volume:
             <form:input path="volume" /><form:errors path="volume" />
             <br />

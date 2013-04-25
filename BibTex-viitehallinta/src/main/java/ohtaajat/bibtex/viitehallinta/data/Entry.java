@@ -230,6 +230,20 @@ public abstract class Entry {
     public void setCite(String cite) {
         this.cite = cite;
     }
+    
+    public HashMap<String, String> toMap() {
+        HashMap<String, String> map = new HashMap<String, String>();
+        
+        Method[] metodit = Entry.class.getMethods();
+        for (Method method : metodit) {
+            if (metodienNimet.containsKey(method.getName())) {
+                String arvo = (String) ReflectionUtils.invokeMethod(method, this);
+                if (arvo != null && !arvo.trim().isEmpty()) {
+                    map.put(metodienNimet.get(method.getName()), arvo);
+                }
+            }
+        } return map;
+    }
 
     public abstract String toBibTex(String otsikko);
 
@@ -250,17 +264,17 @@ public abstract class Entry {
     @Override
     public String toString() {
         Method[] metodit = Entry.class.getMethods();
-        String bibtex = "<div><table>" + "\n";
+        String bibtex = "<div><pre><table>" + "\n";
         bibtex += "<tr><td>ID</td><td>:</td><td>" + id + "</td></tr>" + "\n";
         for (Method method : metodit) {
             if (metodienNimet.containsKey(method.getName())) {
                 String arvo = (String) ReflectionUtils.invokeMethod(method, this);
                 if (arvo != null && !arvo.trim().isEmpty()) {
-                    bibtex += "<tr><td>" + metodienNimet.get(method.getName()) + "</td><td>:</td><td>" + arvo + "</td></tr>" + "\n";
+                    bibtex += "<tr><td>    " + metodienNimet.get(method.getName()) + "</td><td>:</td><td>" + arvo + "</td></tr>" + "\n";
                 }
             }
         }
-        bibtex += "</table></div>" + "\n";
+        bibtex += "</table></pre></div>" + "\n";
         return bibtex;
     }
 }
