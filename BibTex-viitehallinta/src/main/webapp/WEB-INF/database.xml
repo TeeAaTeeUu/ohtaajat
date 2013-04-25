@@ -19,6 +19,8 @@
     <!-- lisää jpa:repositories ... tähän -->
     <jpa:repositories base-package="ohtaajat.bibtex.viitehallinta.repositories" />
     
+    
+
     <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
         <property name="persistenceUnitName" value="persistenceUnitDev" /> 
         <property name="dataSource" ref="dataSource" />
@@ -38,17 +40,18 @@
     
     <beans profile="production">
         <!-- ympäristöön liittyvä konfiguraatiotiedosto -->
-        <context:property-placeholder location="classpath:production.properties"/>
-
+        <bean class="java.net.URI" id="dbUrl">
+            <constructor-arg value="#{systemEnvironment['DATABASE_URL']}"/>
+        </bean>
         <!-- luodaan tietokantakonfiguraatio luetun konfiguraatiotiedoston perusteella -->
         <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
             <property name="driverClassName" value="org.postgresql.Driver"/>
-            <property name="url" value="${database.url}"/>
-            <property name="username" value="${database.username}"/>
-            <property name="password" value="${database.password}"/>
+            <property name="url" value="#{ 'jdbc:postgresql://' + @dbUrl.getHost() + ':' + @dbUrl.getPort() + @dbUrl.getPath() }"/>
+            <property name="username" value="#{ @dbUrl.getUserInfo().split(':')[0] }"/>
+            <property name="password" value="#{ @dbUrl.getUserInfo().split(':')[1] }"/>
         </bean>
     </beans>
-     <beans profile="dev,default">
+    <beans profile="dev,default">
         <!-- ympäristöön liittyvä konfiguraatiotiedosto -->
         <context:property-placeholder location="classpath:development.properties"/>
 

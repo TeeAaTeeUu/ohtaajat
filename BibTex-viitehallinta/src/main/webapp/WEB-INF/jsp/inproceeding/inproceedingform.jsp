@@ -7,12 +7,12 @@
         <title>Create new inproceeding</title>
     </head>
     <body bgcolor="#C0C0C0">
-        <a href="${pageContext.request.contextPath}">Back to index page</a><br />
-        
+        <a href="${pageContext.request.contextPath}/">Back to index page</a><br />
+
         <h1><U>Inproceeding</U></h1>
         <hr />
-        
-                <form:form commandName="inproceeding" action="${pageContext.request.contextPath}/app/inproceedings/new" method="POST">
+
+        <form:form commandName="inproceeding" action="${pageContext.request.contextPath}/app/inproceedings/new" method="POST">
             Author:
             <form:input path="author" /><form:errors path="author" />
             <br>

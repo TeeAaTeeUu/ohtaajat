@@ -7,7 +7,7 @@
         <title>${title}</title>
     </head>
     <body bgcolor="#C0C0C0">
-        <a href="${pageContext.request.contextPath}">Back to index page</a><br />
+        <a href="${pageContext.request.contextPath}/">Back to index page</a><br />
         <h1>Download entries in file</h1>
         <form action="${pageContext.request.contextPath}/app/entries/download">
             File name: <input type="text" name="name" /><br />

@@ -8,7 +8,7 @@
         <title>Inproceedings</title>
     </head>
     <body bgcolor="#C0C0C0">
-        <a href="${pageContext.request.contextPath}">Back to index page</a><br />
+        <a href="${pageContext.request.contextPath}/">Back to index page</a><br />
         <h1>Inproceedings</h1>
         <c:forEach var="inproceeding" items="${inproceedings}">     
             ${inproceeding}
