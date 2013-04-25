@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
-public class JpaArticeService implements ArticleService{
+public class JpaArticleService implements ArticleService{
 
     @Autowired
     private ArticleRepository arepo;

@@ -100,16 +100,31 @@ public class JpaBookServiceTest {
     @Test
     public void findBookByPartOfAuthorWorks(){
         Book book = new Book();
+        Book book2 = new Book();
+        Book book3 = new Book();
         
         book.setAuthor("Pekka Puupaa");
         book.setTitle("Pekka ja Patka");
         book.setYear("1989");
         book.setPublisher("Otava");
+        
+        book2.setAuthor("Pekka Puupaa");
+        book2.setTitle("Pekka ja Patka 2");
+        book2.setYear("1989");
+        book2.setPublisher("Otava");
+        
+        book3.setAuthor("seppo mies");
+        book3.setTitle("sepon seikkailut");
+        book3.setYear("1989");
+        book3.setPublisher("Otava");
+        
         service.create(book);
+        service.create(book2);
+        service.create(book3);
         
         List<Book> list = new ArrayList<Book>();
         list = service.findByPartOfAuthor("Pekka");
         
-        assertEquals(brepo.count(), list.size());
+        assertEquals(2 , list.size());
     }
 }
