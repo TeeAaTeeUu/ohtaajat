@@ -38,7 +38,7 @@ public class InproceedingSeleniumTest {
         year.sendKeys("2005");
         booktitle.sendKeys("joku");
         author.submit();
-        System.out.println(driver.getPageSource());
+        
         assertEquals(true, driver.getPageSource().contains("inpro3"));
         assertEquals(true, driver.getPageSource().contains("inpro otsikko"));
     }
