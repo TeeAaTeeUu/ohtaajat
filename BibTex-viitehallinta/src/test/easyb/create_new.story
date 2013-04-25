@@ -37,12 +37,12 @@ scenario "user can create new inproceeding", {
         author = driver.findElement(By.name("author"));
         title = driver.findElement(By.name("title"));
         year = driver.findElement(By.name("year"));
-        journal = driver.findElement(By.name("journal"));
+        booktitle = driver.findElement(By.name("booktitle"));
 
         author.sendKeys("inpro3");
         title.sendKeys("inpro otsikko");
         year.sendKeys("2005");
-        journal.sendKeys("joku");
+        booktitle.sendKeys("joku");
         author.submit();
     }
     then 'new inproceeding is created', {

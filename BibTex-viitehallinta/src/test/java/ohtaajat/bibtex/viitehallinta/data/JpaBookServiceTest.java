@@ -1,6 +1,7 @@
 package ohtaajat.bibtex.viitehallinta.data;
 
 import java.lang.reflect.Field;
+import ohtaajat.bibtex.viitehallinta.repositories.BookRepository;
 import ohtaajat.bibtex.viitehallinta.service.BookService;
 import ohtaajat.bibtex.viitehallinta.service.JpaBookService;
 import org.junit.After;
@@ -13,10 +14,10 @@ import static org.junit.Assert.*;
 public class JpaBookServiceTest {
 
     private BookService service;
-
+    private JpaBookRepository brepo;
     @Before
     public void setUp() {
-        System.out.println("jep");
+        brepo = new JpaBookRepository();
         service = new JpaBookService();
         Field field = null;
         try {
@@ -26,15 +27,28 @@ public class JpaBookServiceTest {
         }
         field.setAccessible(true);
         try {
-            field.set(service, new JpaBookRepository());
+            field.set(service, brepo);
         } catch (IllegalAccessException e) {
             System.out.println("Ei oikeuksia");
         }
-        System.out.println("ok");
+        
     }
     
     @Test
-    public void testaa(){
+    public void createNewBook(){
+         
+        Book book = new Book();
+
         
+        book.setAuthor("Pekka Puupaa");
+        book.setTitle("Pekka ja Patka");
+        book.setYear("1989");
+        book.setPublisher("Otava");
+
+        service.create(book);
+        
+        System.out.println(brepo.count());
+
+
     }
 }

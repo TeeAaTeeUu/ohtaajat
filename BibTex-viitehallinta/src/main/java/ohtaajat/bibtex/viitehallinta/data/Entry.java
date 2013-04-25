@@ -10,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 import org.springframework.util.ReflectionUtils;
 
+
 @MappedSuperclass
 public abstract class Entry {
 

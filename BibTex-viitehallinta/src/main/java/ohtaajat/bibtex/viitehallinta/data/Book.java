@@ -3,6 +3,7 @@ package ohtaajat.bibtex.viitehallinta.data;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
+
 @Entity(name = "Book")
 @Table(name = "Book")
 public class Book extends Entry {

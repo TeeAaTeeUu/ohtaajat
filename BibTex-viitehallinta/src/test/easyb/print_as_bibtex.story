@@ -36,12 +36,12 @@ scenario "user can print inproceedings in bibtex", {
         author = driver.findElement(By.name("author"));
         title = driver.findElement(By.name("title"));
         year = driver.findElement(By.name("year"));
-        publisher = driver.findElement(By.name("publisher"));
+        booktitle = driver.findElement(By.name("boobtitle"));
 
         author.sendKeys("inpro3");
         title.sendKeys("Kirjan otsikko");
         year.sendKeys("2005");
-        publisher.sendKeys("joku");
+        booktitle.sendKeys("joku");
         author.submit();
     }
     when 'List inproceedings link is pressed', {
