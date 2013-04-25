@@ -1,7 +1,4 @@
 # OS X
 .DS_Store
 
-target/
-*.*sql
-
 .git
