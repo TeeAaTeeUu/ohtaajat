@@ -1,4 +1,4 @@
-/*
+
 package ohtaajat.bibtex.viitehallinta.selenium;
 
 import junit.framework.Assert;
@@ -42,4 +42,3 @@ public class InproceedingSeleniumTest {
  
 
 }
- */

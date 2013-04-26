@@ -1,4 +1,4 @@
-   /* 
+
 package ohtaajat.bibtex.viitehallinta.selenium;
 
 import junit.framework.Assert;
@@ -22,7 +22,7 @@ public class BookSeleniumTest {
     @Test
     public void addingNewBookWorks() throws Exception {
         driver.get("http://localhost:8080/");
-        System.out.println(driver.getPageSource());
+
         WebElement element = driver.findElement(By.linkText("Create new book"));
         element.click();
         WebElement author = driver.findElement(By.name("author"));
@@ -42,4 +42,3 @@ public class BookSeleniumTest {
     
 
 }
-*/
