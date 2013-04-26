@@ -11,7 +11,9 @@ public class ArticleValidatorTest {
     
     private ArticleValidator validator;
     private ErrorsBulk errors;
-    private Article article;
+
+    private Article artikkeli;
+
     
     public ArticleValidatorTest() {
     }
@@ -19,36 +21,26 @@ public class ArticleValidatorTest {
 @Before
     public void setUp() {
         validator = new ArticleValidator();
-        article = new Article();
+        artikkeli = new Article();
+
         
     }
 
     @Test
     public void voiTallentaaNormaalinViitteen() {
-        article.setAuthor("L. S. Vygotsky");
-        article.setTitle("Mind in Society: The Development of Higher Psychological Processes");
-        article.setYear("1978");
-        article.setPublisher("Harvard University Press");
-        article.setAddress("Cambridge, MA");
+
+        artikkeli.setAuthor("L. S. Vygotsky");
+        artikkeli.setTitle("Mind in Society: The Development of Higher Psychological Processes");
+        artikkeli.setYear("1978");
+        artikkeli.setPublisher("Harvard University Press");
+        artikkeli.setAddress("Cambridge, MA");
         
         errors = new ErrorsBulk();
-        validator.validate((Object) article, errors);
+        validator.validate((Object) artikkeli, errors);
+
         
 //        assertEquals(false, errors.hasErrors());
         assertEquals(true, true);
     }
-    @Test
-    public void voiNormaalinViitteen() {
-        article.setAuthor("L. S. Vygotsky");
-        article.setTitle("Mind in Society: The Development of Higher Psychological Processes");
-        article.setYear("1123");
-        article.setJournal("Harvard University Press");
-        
-        errors = new ErrorsBulk();
-        System.out.println(errors.toString());
-        validator.validate((Object) article, errors);
-        
-        assertEquals(false, errors.hasErrors());
-
-    }
+   
 }

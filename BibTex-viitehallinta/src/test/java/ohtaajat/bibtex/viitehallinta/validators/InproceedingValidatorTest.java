@@ -11,7 +11,8 @@ public class InproceedingValidatorTest {
     
     private InproceedingValidator validator;
     private ErrorsBulk errors;
-    private Inproceeding inproceeding;
+    private Inproceeding viite;
+
     
     public InproceedingValidatorTest() {
     }
@@ -19,20 +20,23 @@ public class InproceedingValidatorTest {
 @Before
     public void setUp() {
         validator = new InproceedingValidator();
-        inproceeding = new Inproceeding();
+
+        viite = new Inproceeding();
         
     }
 
     @Test
     public void voiTallentaaNormaalinViitteen() {
-        inproceeding.setAuthor("L. S. Vygotsky");
-        inproceeding.setTitle("Mind in Society: The Development of Higher Psychological Processes");
-        inproceeding.setYear("1978");
-        inproceeding.setPublisher("Harvard University Press");
-        inproceeding.setAddress("Cambridge, MA");
+
+        viite.setAuthor("L. S. Vygotsky");
+        viite.setTitle("Mind in Society: The Development of Higher Psychological Processes");
+        viite.setYear("1978");
+        viite.setPublisher("Harvard University Press");
+        viite.setAddress("Cambridge, MA");
         
         errors = new ErrorsBulk();
-        validator.validate((Object) inproceeding, errors);
+        validator.validate((Object) viite, errors);
+
         
         assertEquals(false, false);
     }

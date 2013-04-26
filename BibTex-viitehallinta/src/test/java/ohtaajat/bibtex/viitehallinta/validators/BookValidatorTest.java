@@ -33,6 +33,8 @@ public class BookValidatorTest {
         errors = new ErrorsBulk();
         validator.validate((Object) kirja, errors);
         
-        assertEquals(true, true);
+//        assertEquals(true, true);
+        assertEquals(false, errors.hasErrors());
+        
     }
 }
