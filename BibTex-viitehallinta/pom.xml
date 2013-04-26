@@ -292,7 +292,7 @@
                         
                         <goals>
                             <!--<goal>run-exploded</goal>--> 
-                            <goal>start</goal>
+                            <goal>run</goal>
                         </goals>
                                                 
                         <configuration>
