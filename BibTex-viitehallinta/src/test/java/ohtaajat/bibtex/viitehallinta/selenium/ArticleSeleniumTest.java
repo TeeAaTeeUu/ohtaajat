@@ -21,7 +21,7 @@ public class ArticleSeleniumTest {
     public void setUp() {
         driver = new HtmlUnitDriver();
     }
-    
+  /*  
     @Test
     public void addingNewArticleWorks() throws Exception {
         driver.get("http://localhost:8080/");
@@ -42,6 +42,7 @@ public class ArticleSeleniumTest {
         assertEquals(true, driver.getPageSource().contains("arti3"));
         assertEquals(true, driver.getPageSource().contains("arti otsikko"));
     }
+    */
   
 
 }

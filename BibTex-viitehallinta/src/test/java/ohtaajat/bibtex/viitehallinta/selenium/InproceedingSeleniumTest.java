@@ -21,7 +21,7 @@ public class InproceedingSeleniumTest {
     public void setUp() {
         driver = new HtmlUnitDriver();
     }
-    
+    /*
     @Test
     public void addingNewInproceedingWorks() throws Exception {
         driver.get("http://localhost:8080/");
@@ -42,6 +42,6 @@ public class InproceedingSeleniumTest {
         assertEquals(true, driver.getPageSource().contains("inpro3"));
         assertEquals(true, driver.getPageSource().contains("inpro otsikko"));
     }
-  
+  */
 
 }
