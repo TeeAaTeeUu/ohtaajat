@@ -37,4 +37,18 @@ public class ArticleValidatorTest {
 //        assertEquals(false, errors.hasErrors());
         assertEquals(true, true);
     }
+    @Test
+    public void voiNormaalinViitteen() {
+        article.setAuthor("L. S. Vygotsky");
+        article.setTitle("Mind in Society: The Development of Higher Psychological Processes");
+        article.setYear("1123");
+        article.setJournal("Harvard University Press");
+        
+        errors = new ErrorsBulk();
+        System.out.println(errors.toString());
+        validator.validate((Object) article, errors);
+        
+        assertEquals(false, errors.hasErrors());
+
+    }
 }
