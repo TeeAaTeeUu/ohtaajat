@@ -1,5 +1,6 @@
 package ohtaajat.bibtex.viitehallinta.data;
 
+import ohtaajat.bibtex.viitehallinta.bibtexmuunnin.BibTexMuunnin;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;

@@ -2,7 +2,7 @@ package ohtaajat.bibtex.viitehallinta.controller;
 
 import javax.annotation.PostConstruct;
 import javax.validation.Valid;
-import ohtaajat.bibtex.viitehallinta.data.BibTexTekija;
+import ohtaajat.bibtex.viitehallinta.bibtexmuunnin.BibTexTekija;
 import ohtaajat.bibtex.viitehallinta.data.Book;
 import ohtaajat.bibtex.viitehallinta.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;

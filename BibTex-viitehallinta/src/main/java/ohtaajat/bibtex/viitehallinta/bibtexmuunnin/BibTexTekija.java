@@ -1,7 +1,8 @@
-package ohtaajat.bibtex.viitehallinta.data;
+package ohtaajat.bibtex.viitehallinta.bibtexmuunnin;
 
 import java.util.HashSet;
 import java.util.List;
+import ohtaajat.bibtex.viitehallinta.data.Entry;
 
 public class BibTexTekija {
 

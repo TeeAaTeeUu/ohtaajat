@@ -3,7 +3,7 @@ package ohtaajat.bibtex.viitehallinta.controller;
 import java.util.ArrayList;
 import java.util.List;
 import ohtaajat.bibtex.viitehallinta.data.Article;
-import ohtaajat.bibtex.viitehallinta.data.BibTexTekija;
+import ohtaajat.bibtex.viitehallinta.bibtexmuunnin.BibTexTekija;
 import ohtaajat.bibtex.viitehallinta.data.Book;
 import ohtaajat.bibtex.viitehallinta.data.Entry;
 import ohtaajat.bibtex.viitehallinta.data.Inproceeding;

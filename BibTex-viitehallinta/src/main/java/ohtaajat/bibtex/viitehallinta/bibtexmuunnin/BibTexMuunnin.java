@@ -1,4 +1,4 @@
-package ohtaajat.bibtex.viitehallinta.data;
+package ohtaajat.bibtex.viitehallinta.bibtexmuunnin;
 
 import java.util.HashMap;
 import java.util.Map;

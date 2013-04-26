@@ -1,5 +1,6 @@
 package ohtaajat.bibtex.viitehallinta.data;
 
+import ohtaajat.bibtex.viitehallinta.bibtexmuunnin.BibTexMuunnin;
 import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.Map;

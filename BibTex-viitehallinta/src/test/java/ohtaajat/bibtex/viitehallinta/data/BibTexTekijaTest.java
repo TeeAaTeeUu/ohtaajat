@@ -1,5 +1,6 @@
 package ohtaajat.bibtex.viitehallinta.data;
 
+import ohtaajat.bibtex.viitehallinta.bibtexmuunnin.BibTexTekija;
 import java.util.ArrayList;
 import org.junit.Before;
 import org.junit.Test;
