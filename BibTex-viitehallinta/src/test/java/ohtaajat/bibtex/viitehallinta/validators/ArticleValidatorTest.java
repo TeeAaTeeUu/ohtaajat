@@ -1,5 +1,6 @@
 package ohtaajat.bibtex.viitehallinta.validators;
 
+import ohtaajat.bibtex.viitehallinta.data.Article;
 import ohtaajat.bibtex.viitehallinta.data.Book;
 import org.junit.Before;
 import org.junit.Test;
@@ -8,30 +9,30 @@ import static org.junit.Assert.*;
 
 public class ArticleValidatorTest {
     
-    private BookValidator validator;
+    private ArticleValidator validator;
     private ErrorsBulk errors;
-    private Book kirja;
+    private Article artikkeli;
     
     public ArticleValidatorTest() {
     }
     
 @Before
     public void setUp() {
-        validator = new BookValidator();
-        kirja = new Book();
+        validator = new ArticleValidator();
+        artikkeli = new Article();
         
     }
 
     @Test
     public void voiTallentaaNormaalinViitteen() {
-        kirja.setAuthor("L. S. Vygotsky");
-        kirja.setTitle("Mind in Society: The Development of Higher Psychological Processes");
-        kirja.setYear("1978");
-        kirja.setPublisher("Harvard University Press");
-        kirja.setAddress("Cambridge, MA");
+        artikkeli.setAuthor("L. S. Vygotsky");
+        artikkeli.setTitle("Mind in Society: The Development of Higher Psychological Processes");
+        artikkeli.setYear("1978");
+        artikkeli.setPublisher("Harvard University Press");
+        artikkeli.setAddress("Cambridge, MA");
         
         errors = new ErrorsBulk();
-        validator.validate((Object) kirja, errors);
+        validator.validate((Object) artikkeli, errors);
         
 //        assertEquals(false, errors.hasErrors());
         assertEquals(true, true);
