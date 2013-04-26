@@ -9,6 +9,6 @@
         <a href="${pageContext.request.contextPath}/">Back to index page</a><br />
 
         <h1>Books in bibtex:</h1>
-        ${books}
+        <pre>${books}</pre>
     </body>
 </html>

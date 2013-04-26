@@ -10,7 +10,7 @@
     <body bgcolor="#C0C0C0">
         <a href="${pageContext.request.contextPath}/">Back to index page</a><br />
         <h1>Books</h1>
-        <c:forEach var="book" items="${books}">     
+        <c:forEach var="book" items="${books}">
             ${book}
             <form:form action="${pageContext.request.contextPath}/app/books/${book.id}/" method="DELETE">
                 <input type="submit" value="Poista" />

@@ -10,8 +10,8 @@
     <body bgcolor="#C0C0C0">
         <a href="${pageContext.request.contextPath}/">Back to index page</a><br />
         <h1>Inproceedings</h1>
-        <c:forEach var="inproceeding" items="${inproceedings}">     
-            ${inproceeding}
+        <c:forEach var="inproceeding" items="${inproceedings}"> 
+                ${inproceeding}
             <form:form action="${pageContext.request.contextPath}/app/inproceedings/${inproceeding.id}/" method="DELETE">
                 <input type="submit" value="Poista" />
             </form:form>

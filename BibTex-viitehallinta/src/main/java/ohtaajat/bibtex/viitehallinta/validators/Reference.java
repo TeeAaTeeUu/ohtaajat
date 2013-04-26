@@ -8,13 +8,13 @@ import org.springframework.validation.Errors;
 
 public abstract class Reference {
 
-    ArrayList<String> pitaaSisaltaa;
-    ArrayList<String> pitaaSisaltaaVainJokin;
-    ArrayList<String> saaSisaltaaVain;
-    HashMap<String, String> kaikkiEntryt;
-    ArrayList<String> numerollisetOtsikot;
-    Set<String> kaikkiEntryOtsikot;
-    Errors errors;
+    protected ArrayList<String> pitaaSisaltaa;
+    protected ArrayList<String> pitaaSisaltaaVainJokin;
+    protected ArrayList<String> saaSisaltaaVain;
+    protected HashMap<String, String> kaikkiEntryt;
+    protected ArrayList<String> numerollisetOtsikot;
+    protected Set<String> kaikkiEntryOtsikot;
+    protected Errors errors;
 
     public Reference() {
         this.pitaaSisaltaaVainJokin = new ArrayList<String>();
@@ -119,7 +119,7 @@ public abstract class Reference {
     private void vuosiOnOikeanlainen(String numerollinen) {
         int numero = palautaNumero(numerollinen);
         if (numero >= 3000 || numero < 0) {
-            errors.rejectValue(numerollinen, "virheellinen_arvo", "Oletko varma, että vuosi meni oikein?" + numero);
+            errors.rejectValue(numerollinen, "virheellinen_arvo", "Oletko varma, että vuosi meni oikein?");
         }
     }
 
