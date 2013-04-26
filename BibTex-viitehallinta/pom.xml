@@ -274,7 +274,7 @@
                 <!-- start jetty before running tests -->
                 
                 <executions>
-<!--                    <execution>
+                    <execution>
                         <id>start-jetty</id>
                         <phase>pre-integration-test</phase>
                         <goals>
@@ -284,7 +284,7 @@
                             <scanIntervalSeconds>0</scanIntervalSeconds>
                             <daemon>true</daemon>                           
                         </configuration>
-                    </execution>-->
+                    </execution>
                     <execution>
                         <id>start-jetty2</id>
                         <phase>process-test-classes</phase>
