@@ -10,12 +10,12 @@
     <body bgcolor="#C0C0C0">
         <a href="${pageContext.request.contextPath}/">Back to index page</a><br />
         <h1>Articles</h1>
-        <c:forEach var="article" items="${articles}">     
-            ${article}
-            <form:form action="${pageContext.request.contextPath}/app/articles/${article.id}/" method="DELETE">
-                <input type="submit" value="Poista" />
-            </form:form>
-            <br />
-        </c:forEach>
-    </body>
+        <c:forEach var="article" items="${articles}">
+        ${article}
+    <form:form action="${pageContext.request.contextPath}/app/articles/${article.id}/" method="DELETE">
+        <input type="submit" value="Poista" />
+    </form:form>
+    <br />
+</c:forEach>
+</body>
 </html>
