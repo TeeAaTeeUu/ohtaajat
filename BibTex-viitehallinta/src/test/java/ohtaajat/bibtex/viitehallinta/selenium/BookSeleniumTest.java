@@ -1,4 +1,4 @@
-
+   /* 
 package ohtaajat.bibtex.viitehallinta.selenium;
 
 import junit.framework.Assert;
@@ -8,10 +8,7 @@ import org.openqa.selenium.htmlunit.HtmlUnitDriver;
 import org.junit.Before;
 import org.junit.Test;
 
-/**
- *
- * @author Teemu
- */
+
 public class BookSeleniumTest {
     
     private WebDriver driver;
@@ -21,7 +18,7 @@ public class BookSeleniumTest {
     public void setUp() {
         driver = new HtmlUnitDriver();
     }
-   /* 
+
     @Test
     public void addingNewBookWorks() throws Exception {
         driver.get("http://localhost:8080/");
@@ -42,6 +39,7 @@ public class BookSeleniumTest {
         assertEquals(true, driver.getPageSource().contains("Kirja3"));
         assertEquals(true, driver.getPageSource().contains("Kirjan otsikko"));
     }
-    */
+    
 
 }
+*/
