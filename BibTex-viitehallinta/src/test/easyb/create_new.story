@@ -26,7 +26,8 @@ scenario "user can create new book", {
         driver.getPageSource().contains("2005").shouldBe true
         driver.getPageSource().contains("joku").shouldBe true
     }
-}    
+}
+    
 
 scenario "user can create new inproceeding", {
     given 'Create new inproceeding is selected', {

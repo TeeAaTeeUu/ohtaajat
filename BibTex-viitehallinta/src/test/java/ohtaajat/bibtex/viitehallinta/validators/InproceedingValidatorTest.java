@@ -1,6 +1,7 @@
 package ohtaajat.bibtex.viitehallinta.validators;
 
 import ohtaajat.bibtex.viitehallinta.data.Book;
+import ohtaajat.bibtex.viitehallinta.data.Inproceeding;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -8,30 +9,30 @@ import static org.junit.Assert.*;
 
 public class InproceedingValidatorTest {
     
-    private BookValidator validator;
+    private InproceedingValidator validator;
     private ErrorsBulk errors;
-    private Book kirja;
+    private Inproceeding inproceeding;
     
     public InproceedingValidatorTest() {
     }
     
 @Before
     public void setUp() {
-        validator = new BookValidator();
-        kirja = new Book();
+        validator = new InproceedingValidator();
+        inproceeding = new Inproceeding();
         
     }
 
     @Test
     public void voiTallentaaNormaalinViitteen() {
-        kirja.setAuthor("L. S. Vygotsky");
-        kirja.setTitle("Mind in Society: The Development of Higher Psychological Processes");
-        kirja.setYear("1978");
-        kirja.setPublisher("Harvard University Press");
-        kirja.setAddress("Cambridge, MA");
+        inproceeding.setAuthor("L. S. Vygotsky");
+        inproceeding.setTitle("Mind in Society: The Development of Higher Psychological Processes");
+        inproceeding.setYear("1978");
+        inproceeding.setPublisher("Harvard University Press");
+        inproceeding.setAddress("Cambridge, MA");
         
         errors = new ErrorsBulk();
-        validator.validate((Object) kirja, errors);
+        validator.validate((Object) inproceeding, errors);
         
         assertEquals(false, false);
     }
