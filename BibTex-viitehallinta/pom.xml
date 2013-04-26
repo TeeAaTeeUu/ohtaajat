@@ -16,7 +16,7 @@
         <spring-version>3.1.2.RELEASE</spring-version>
         
         <jetty.maven.plugin.version>8.1.5.v20120716</jetty.maven.plugin.version>
-        <jetty.port>8080</jetty.port>
+        <jetty.port>8090</jetty.port>
     </properties>
 
     <dependencies>
@@ -274,7 +274,7 @@
                 <!-- start jetty before running tests -->
                 
                 <executions>
-<!--                    <execution>
+                    <execution>
                         <id>start-jetty</id>
                         <phase>pre-integration-test</phase>
                         <goals>
@@ -284,7 +284,7 @@
                             <scanIntervalSeconds>0</scanIntervalSeconds>
                             <daemon>true</daemon>                           
                         </configuration>
-                    </execution>-->
+                    </execution>
                     <execution>
                         <id>start-jetty2</id>
                         <phase>process-test-classes</phase>
@@ -323,7 +323,7 @@
                 </configuration>                
                
             </plugin>
-            <!--            <plugin>
+            <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>cobertura-maven-plugin</artifactId>
                 <version>2.4</version>
@@ -346,7 +346,7 @@
                         </goals>
                     </execution>
                 </executions>
-            </plugin>-->
+            </plugin>
            <plugin>
                 <groupId>org.easyb</groupId>
                 <artifactId>maven-easyb-plugin</artifactId>
