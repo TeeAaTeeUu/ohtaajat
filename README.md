@@ -14,3 +14,7 @@ Jenkins
 Heroku
 
 - http://ohtaajat-bibtex.herokuapp.com/
+
+Raportti
+
+- https://docs.google.com/document/d/1F9kmuRdunrQZM9svjZeNDDHVjMNj4tWl9jKGPzVjRNk/edit
